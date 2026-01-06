@@ -64,6 +64,14 @@ This project follows a hypothesis-driven research methodology:
 - King Fahd Complex editions
 - Authenticated reciter sources
 
+---
+
+### Open Source Resources
+1. [Free API Layer | Integrations and Integratability in minutes](https://apilayer.com/)
+2. [Open Router SDKs](https://github.com/OpenRouterTeam)
+3. [Super Lite SQL Database Viewer Desktop Client](https://github.com/Rohithgilla12/data-peek)
+
+---
 ## License
 
 Research project for Quranic Technologies - see specs/ for details.
