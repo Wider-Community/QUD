@@ -1,0 +1,12 @@
+Field Name,Layer Numbers,Layer Names,Confidence,Conflation Detected,Category,Reasoning
+id,5,Verse Structure,1.00,No,Structural Layers (3-8),Verse identifier (surah:verse) maps directly to Layer 5 (Verse Structure)
+jozz,7,Division Structure,1.00,No,Structural Layers (3-8),Juz number maps directly to Layer 7 (Division Structure)
+page,11,Page Layout,1.00,No,Layout Layers (11-12),Page number maps directly to Layer 11 (Page Layout)
+sura_no,6,Surah Structure,1.00,No,Structural Layers (3-8),Surah number maps directly to Layer 6 (Surah Structure)
+sura_name_en,6,Surah Structure,1.00,No,Structural Layers (3-8),Surah name (English) maps to Layer 6 (Surah Structure)
+sura_name_ar,"6, 1","Surah Structure, Character Symbols",0.90,Yes,Structural Layers (3-8),"Surah name (Arabic) primarily maps to Layer 6, but also includes Layer 1 (Character Symbols) due to Arabic text encoding"
+line_start,12,Line Layout,1.00,No,Layout Layers (11-12),Starting line number maps directly to Layer 12 (Line Layout)
+line_end,12,Line Layout,1.00,No,Layout Layers (11-12),Ending line number maps directly to Layer 12 (Line Layout)
+aya_no,5,Verse Structure,1.00,No,Structural Layers (3-8),Verse number within surah maps directly to Layer 5 (Verse Structure)
+aya_text,"0, 1, 2, 3, 4, 5, 9, 10, 13","Character Composition, Character Symbols, Character Paired Data, Word Structure, Sentence Structure, Verse Structure, Qiraat/Manuscript, Edition Variants, Orthographic Systems",1.00,Yes,Character Layers (0-2),"Full verse text conflates 9 layers: character composition/symbols/paired data, word/sentence/verse structure, qiraat variants, edition differences, and orthography. This is the PRIMARY CONFLATION POINT."
+aya_text_emlaey,"0, 1, 3, 4, 5, 10, 13","Character Composition, Character Symbols, Word Structure, Sentence Structure, Verse Structure, Edition Variants, Orthographic Systems",0.90,Yes,Character Layers (0-2),"Simplified text (modern orthography) conflates 7 layers: character composition/symbols, word/sentence/verse structure, edition variants, and orthographic normalization. Differs from aya_text by removing diacriticals (Layer 2) but adds orthographic normalization."

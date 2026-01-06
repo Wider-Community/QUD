@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-04-sentence-structure.json",
+  "title": "Layer 4: Sentence Structure",
+  "description": "Grammatical composition, waqf (stopping) rules, ibtida (starting) rules",
+  "type": "object",
+  "required": ["sentence_id", "verse_ref", "word_refs"],
+  "properties": {
+    "sentence_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this sentence instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse)"
+    },
+    "word_range": {
+      "type": "array",
+      "items": { "type": "integer" },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "[start_word, end_word] referencing Layer 3 word positions"
+    },
+    "word_refs": {
+      "type": "array",
+      "items": { "type": "string", "format": "uuid" },
+      "minItems": 1,
+      "description": "UUIDs of Layer 3 words composing this sentence"
+    },
+    "grammar_type": {
+      "type": "string",
+      "enum": ["nominal", "verbal", "conditional", "interrogative", "imperative", "other"],
+      "description": "Grammatical classification"
+    },
+    "waqf_rule": {
+      "type": "string",
+      "enum": ["must_stop", "permitted_stop", "continue", "not_permitted", "test_stop"],
+      "description": "Waqf (stopping) rule at sentence end"
+    },
+    "ibtida_rule": {
+      "type": "string",
+      "enum": ["permitted_start", "not_permitted", "recommended_start"],
+      "description": "Ibtida (starting) rule"
+    },
+    "sentence_position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Sentence index within verse"
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "properties": {
+        "layer_3_words": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Constituent word UUIDs (N:1)"
+        },
+        "layer_5_verse": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Parent verse UUID"
+        }
+      }
+    },
+    "note": {
+      "type": "string",
+      "const": "Layer 4 is MISSING from QS-QIRAAT dataset - requires external linguistic database",
+      "description": "Implementation note"
+    }
+  },
+  "additionalProperties": false
+}

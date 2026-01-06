@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-12a-orthographic-uthmani.json",
+  "title": "Layer 12a: Orthographic Systems - Uthmani Script",
+  "description": "Uthmani script (Rasm Uthmani) - traditional Quranic orthography",
+  "type": "object",
+  "required": [
+    "orthography_id",
+    "verse_ref",
+    "uthmanic_text",
+    "character_refs"
+  ],
+  "properties": {
+    "orthography_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this Uthmani text instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse UUID)"
+    },
+    "uthmanic_text": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Rendered text using Rasm Uthmani rules"
+    },
+    "character_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "UUIDs of Layer 0 characters composing this text"
+    },
+    "symbol_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "UUIDs of Layer 1 symbols"
+    },
+    "script_rules": {
+      "type": "object",
+      "description": "Specific Uthmanic orthographic rules applied",
+      "properties": {
+        "hamza_handling": { "type": "string" },
+        "alif_variants": { "type": "array", "items": { "type": "string" } },
+        "taa_marbuta_rules": { "type": "string" },
+        "yaa_variants": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "properties": {
+        "layer_0_characters": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Constituent character UUIDs"
+        },
+        "layer_1_symbols": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Constituent symbol UUIDs"
+        },
+        "layer_12b_qiasy": {
+          "type": "string",
+          "format": "uuid",
+          "description": "UUID of corresponding Qiasy orthography (with expansion/contraction mapping)"
+        },
+        "expansion_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uthmani_char_uuid": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "qiasy_char_uuids": {
+                "type": "array",
+                "items": { "type": "string", "format": "uuid" }
+              },
+              "position_metadata": {
+                "type": "array",
+                "items": { "type": "integer" }
+              }
+            }
+          },
+          "description": "CRITICAL: 1:N mappings for orthographic expansion (1 Uthmani → 2+ Qiasy)"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/cross-layer-mappings/entity-mapping.json",
+  "title": "EntityMapping: Cross-Layer Relationship Schema",
+  "description": "Core mapping entity linking entities across data layers - handles expansion/contraction cases (1:N, N:1, N:M)",
+  "type": "object",
+  "required": [
+    "mapping_id",
+    "source_layer",
+    "source_entity_id",
+    "target_layer",
+    "target_entity_ids",
+    "mapping_type",
+    "cardinality",
+    "mapping_version"
+  ],
+  "properties": {
+    "mapping_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this mapping"
+    },
+    "source_layer": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 14,
+      "description": "Source layer number (0-14)"
+    },
+    "source_entity_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Entity UUID in source layer"
+    },
+    "target_layer": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 14,
+      "description": "Target layer number (0-14)"
+    },
+    "target_entity_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "minItems": 1,
+      "description": "One or more target entities (handles 1-to-many)"
+    },
+    "mapping_type": {
+      "type": "string",
+      "enum": [
+        "expansion",
+        "contraction",
+        "identity",
+        "derivation",
+        "aggregation",
+        "composition"
+      ],
+      "description": "Type of relationship between source and target"
+    },
+    "cardinality": {
+      "type": "string",
+      "enum": ["1:1", "1:N", "N:1", "N:M"],
+      "description": "Cardinality of the mapping"
+    },
+    "position_metadata": {
+      "type": "object",
+      "description": "Ordering information for expansion/contraction cases",
+      "properties": {
+        "order": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "Sequential order of target entities"
+        },
+        "context": {
+          "type": "string",
+          "description": "Contextual information (e.g., 'word-final', 'mid-verse')"
+        },
+        "character_offsets": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "Character position offsets for precise tracking"
+        }
+      }
+    },
+    "mapping_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version this mapping corresponds to (semver format)"
+    },
+    "semantic_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "description": "SHA-256 hash representing semantic relationship"
+    },
+    "provenance": {
+      "type": "object",
+      "description": "Which Qiraah/narration/orthography/edition this mapping is specific to",
+      "properties": {
+        "qiraah_narration_from": {
+          "type": "string",
+          "description": "Source narration (e.g., 'hafs_an_asim')"
+        },
+        "qiraah_narration_to": {
+          "type": "string",
+          "description": "Target narration (e.g., 'warsh_an_nafi')"
+        },
+        "orthography_from": {
+          "type": "string",
+          "enum": ["uthmani", "qiasy", "imlaai"],
+          "description": "Source orthographic system"
+        },
+        "orthography_to": {
+          "type": "string",
+          "enum": ["uthmani", "qiasy", "imlaai"],
+          "description": "Target orthographic system"
+        },
+        "edition": {
+          "type": "string",
+          "description": "Edition this mapping applies to"
+        }
+      }
+    },
+    "bidirectional_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Reference to reverse mapping (for efficient traversal)"
+    },
+    "validation_status": {
+      "type": "object",
+      "properties": {
+        "validated": {
+          "type": "boolean",
+          "default": false
+        },
+        "validated_by": {
+          "type": "string",
+          "description": "Researcher or system that validated this mapping"
+        },
+        "validated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "confidence_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Confidence level in this mapping (0.0-1.0)"
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "examples": [
+    {
+      "mapping_id": "550e8400-e29b-41d4-a716-446655440000",
+      "source_layer": 0,
+      "source_entity_id": "char-uthmani-taa-marbuta-uuid",
+      "target_layer": 0,
+      "target_entity_ids": ["char-qiasy-ha-uuid", "char-qiasy-taa-uuid"],
+      "mapping_type": "expansion",
+      "cardinality": "1:2",
+      "position_metadata": {
+        "order": [0, 1],
+        "context": "word-final"
+      },
+      "mapping_version": "1.0.0",
+      "semantic_hash": "sha256:abc123...",
+      "provenance": {
+        "orthography_from": "uthmani",
+        "orthography_to": "qiasy"
+      },
+      "bidirectional_ref": "reverse-mapping-uuid"
+    },
+    {
+      "mapping_id": "660e8400-e29b-41d4-a716-446655440001",
+      "source_layer": 5,
+      "source_entity_id": "hafs-surah2-verse20-uuid",
+      "target_layer": 5,
+      "target_entity_ids": ["warsh-surah2-verse19-uuid", "warsh-surah2-verse20-uuid"],
+      "mapping_type": "contraction",
+      "cardinality": "1:2",
+      "position_metadata": {
+        "context": "verse-boundary-variation",
+        "character_offsets": [0, 45]
+      },
+      "mapping_version": "1.0.0",
+      "semantic_hash": "sha256:def456...",
+      "provenance": {
+        "qiraah_narration_from": "hafs_an_asim",
+        "qiraah_narration_to": "warsh_an_nafi"
+      },
+      "bidirectional_ref": "reverse-mapping-uuid"
+    }
+  ]
+}

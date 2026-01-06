@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-00-character-composition.json",
+  "title": "Layer 0: Character Composition",
+  "description": "Base letter sequences with phonetic metadata - the atomic units of Quranic text",
+  "type": "object",
+  "required": [
+    "character_id",
+    "narration_ref",
+    "verse_ref",
+    "position",
+    "base_letter",
+    "phonetic_class",
+    "orthography_type"
+  ],
+  "properties": {
+    "character_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this character instance"
+    },
+    "narration_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 7 (Qiraat Structure) - Which narration this character belongs to"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse Structure)"
+    },
+    "position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Character position in verse (0-indexed)"
+    },
+    "base_letter": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF]$",
+      "description": "Single Unicode codepoint for base Arabic letter (no diacritics)"
+    },
+    "phonetic_class": {
+      "type": "string",
+      "enum": [
+        "consonant",
+        "long_vowel",
+        "hamza",
+        "alif",
+        "waw",
+        "ya",
+        "noon",
+        "meem",
+        "lam",
+        "ra",
+        "qalqalah",
+        "ghunnah_letter",
+        "other"
+      ],
+      "description": "Phonetic classification of the letter"
+    },
+    "tajweed_class": {
+      "type": "string",
+      "enum": [
+        "qalqalah",
+        "ghunnah",
+        "shamsiyyah",
+        "qamariyyah",
+        "madd",
+        "leen",
+        "idgham",
+        "ikhfa",
+        "iqlab",
+        "izhar",
+        "none"
+      ],
+      "description": "Tajweed classification for pronunciation rules"
+    },
+    "orthography_type": {
+      "type": "string",
+      "enum": ["uthmani", "qiasy", "imlaai"],
+      "description": "Which writing system this character follows"
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "description": "UUID-based mappings to related entities in other layers",
+      "properties": {
+        "layer_1_symbols": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of Layer 1 symbols associated with this character (1:N)"
+        },
+        "layer_2_pairs": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of Layer 2 pair relationships this character participates in (1:N)"
+        },
+        "layer_3_word": {
+          "type": "string",
+          "format": "uuid",
+          "description": "UUID of Layer 3 word this character belongs to (N:1)"
+        },
+        "layer_12_orthographic_variants": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of orthographic variants in Layer 12 (expansion/contraction mappings)"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

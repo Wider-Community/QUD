@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-09-division-structure.json",
+  "title": "Layer 9: Division Structure",
+  "description": "Traditional organizational segments (Juz, Hizb, Rub) for recitation scheduling",
+  "type": "object",
+  "required": ["division_id", "mushaf_ref", "division_type", "division_number", "start_verse_ref"],
+  "properties": {
+    "division_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this division"
+    },
+    "mushaf_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 8 (Mushaf)"
+    },
+    "division_type": {
+      "type": "string",
+      "enum": ["juz", "hizb", "rub", "quarter"],
+      "description": "Type of division"
+    },
+    "division_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Sequential number within type (1-30 for juz, 1-60 for hizb, etc.)"
+    },
+    "start_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse UUID)"
+    },
+    "end_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse UUID - optional if known)"
+    },
+    "start_character_position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Character offset within start verse (for mid-verse divisions)"
+    },
+    "narration_specific": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do division boundaries vary by narration?"
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "properties": {
+        "layer_8_mushaf": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "layer_5_verses": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "All verses in this division"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

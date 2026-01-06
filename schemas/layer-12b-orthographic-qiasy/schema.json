@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-12b-orthographic-qiasy.json",
+  "title": "Layer 12b: Orthographic Systems - Qiasy/Imla'i Script",
+  "description": "Modern standard Arabic orthography (Qiasy/Imla'i script)",
+  "type": "object",
+  "required": [
+    "orthography_id",
+    "verse_ref",
+    "qiasy_text"
+  ],
+  "properties": {
+    "orthography_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this Qiasy text instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse UUID)"
+    },
+    "qiasy_text": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Rendered text using modern standard orthography"
+    },
+    "transformation_rules": {
+      "type": "object",
+      "description": "Uthmani→Qiasy rules applied",
+      "properties": {
+        "alif_normalization": { "type": "array", "items": { "type": "string" } },
+        "hamza_normalization": { "type": "array", "items": { "type": "string" } },
+        "taa_marbuta_handling": { "type": "string" },
+        "yaa_normalization": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "character_mapping_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "EntityMapping UUIDs showing Uthmani↔Qiasy character correspondences"
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "properties": {
+        "layer_12a_uthmani": {
+          "type": "string",
+          "format": "uuid",
+          "description": "UUID of source Uthmani orthography"
+        },
+        "contraction_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "qiasy_char_uuids": {
+                "type": "array",
+                "items": { "type": "string", "format": "uuid" }
+              },
+              "uthmani_char_uuid": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "position_metadata": {
+                "type": "array",
+                "items": { "type": "integer" }
+              }
+            }
+          },
+          "description": "N:1 mappings for orthographic contraction (2+ Qiasy → 1 Uthmani)"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-05-verse-structure.json",
+  "title": "Layer 5: Verse Structure",
+  "description": "Verse enumeration and boundaries - the primary organizational unit of the Quran",
+  "type": "object",
+  "required": [
+    "verse_id",
+    "canonical_verse_id",
+    "narration_ref",
+    "surah_ref",
+    "verse_number"
+  ],
+  "properties": {
+    "verse_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this verse instance within a specific narration"
+    },
+    "canonical_verse_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "CRITICAL: Canonical identity independent of narration (solves verse numbering controversy)"
+    },
+    "narration_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 7 (Qiraat Structure)"
+    },
+    "surah_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 6 (Surah)"
+    },
+    "verse_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Verse number within surah (position-based, varies by narration)"
+    },
+    "verse_number_alt": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "description": "Alternative numbering schemes if differs across narrations"
+    },
+    "start_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 0 - first character UUID"
+    },
+    "end_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 0 - last character UUID"
+    },
+    "character_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total characters in this verse"
+    },
+    "word_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total words in this verse"
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "properties": {
+        "layer_0_characters": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of all characters in this verse"
+        },
+        "layer_3_words": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of all words in this verse"
+        },
+        "layer_4_sentences": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of sentences in this verse (if Layer 4 available)"
+        },
+        "layer_6_surah": {
+          "type": "string",
+          "format": "uuid",
+          "description": "UUID of parent surah (N:1)"
+        },
+        "layer_10_pages": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of pages this verse appears on"
+        },
+        "layer_11_lines": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "UUIDs of lines this verse appears on"
+        },
+        "cross_narration_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "narration_ref": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "verse_uuid": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "cardinality": {
+                "type": "string",
+                "enum": ["1:1", "1:N", "N:1"]
+              }
+            }
+          },
+          "description": "Cross-narration verse mappings (Hafs vs Warsh boundary variations)"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

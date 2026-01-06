@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/layer-13-edition-variants.json",
+  "title": "Layer 13: Edition Variants",
+  "description": "Publisher-specific formatting differences",
+  "type": "object",
+  "required": ["edition_id", "publisher", "edition_name"],
+  "properties": {
+    "edition_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this edition"
+    },
+    "publisher": {
+      "type": "string",
+      "description": "Publishing house (e.g., 'King Fahd Complex')"
+    },
+    "edition_name": {
+      "type": "string",
+      "description": "Specific edition name"
+    },
+    "publication_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of publication (ISO 8601)"
+    },
+    "formatting_rules": {
+      "type": "object",
+      "description": "Edition-specific layout preferences",
+      "properties": {
+        "pages_per_juz": { "type": "integer" },
+        "lines_per_page": { "type": "integer" },
+        "font_family": { "type": "string" },
+        "page_size": { "type": "string" }
+      }
+    },
+    "narration_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 7 (Qiraat Structure - optional if edition-specific)"
+    },
+    "cross_layer_mappings": {
+      "type": "object",
+      "properties": {
+        "layer_8_mushaf": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Mushaf instances using this edition"
+        },
+        "layer_10_pages": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Page layouts determined by this edition"
+        },
+        "layer_11_lines": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" },
+          "description": "Line layouts determined by this edition"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
