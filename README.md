@@ -62,7 +62,7 @@ This project follows a hypothesis-driven research methodology:
 [QS-QIRAAT datasets](https://github.com/Wider-Community/QUD/tree/main/QS%20-%20QIRAAT)
 - QS-QIRAAT datasets (6 narrations from 3-4 Qiraat)
  Contains all words of The Whole quraan (6236-Aya) in these formats to be used : 
-- html - sql - xml - csv -json - xlsx 
+- html - sql - xml - csv -json - xlsx -text
 
 - King Fahd Complex editions
 - Authenticated reciter sources
