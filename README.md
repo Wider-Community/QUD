@@ -58,9 +58,12 @@ This project follows a hypothesis-driven research methodology:
 3. Design experiments to validate/refute hypotheses
 4. Document findings (positive and negative results)
 
-## Data Sources
-
+## Datasets  
+[QS-QIRAAT datasets](https://github.com/Wider-Community/QUD/tree/main/QS%20-%20QIRAAT)
 - QS-QIRAAT datasets (6 narrations from 3-4 Qiraat)
+ Contains all words of The Whole quraan (6236-Aya) in these formats to be used : 
+- html - sql - xml - csv -json - xlsx 
+
 - King Fahd Complex editions
 - Authenticated reciter sources
 
