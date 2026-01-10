@@ -141,17 +141,12 @@ Architecture onboarding and research entry point.
 
 Early prototype demos hosted on Google Drive:
 
-🎬 Demo Part 1
-
-🎬 Demo Part 2
-
-🎬 Demo Part 3
-
-🎬 Demo Part 4
-
-🎬 Demo Part 5
-
-🎬 Demo Part 6
+* [**Demo part 1**](https://drive.google.com/file/d/1hwXCKfWG7Ezap8Zt0TfhRllIOZmd0CTd/view?usp=drive_link)
+* [**Demo part 2**](https://drive.google.com/file/d/1sjM7qK2CV7BoaWa9B13E9yDpbbofEZEI/view?usp=drive_link)
+* [**Demo part 3**](https://drive.google.com/file/d/1oPv1JvL9_PthSMnbw7YXii28xlNzHT3C/view?usp=drive_link)
+* [**Demo part 4**](https://drive.google.com/file/d/1leQT5g5JxkP08w0XtkQ0X7GTrbBUPf_5/view?usp=drive_link)
+* [**Demo part 5**](https://drive.google.com/file/d/1vVmY5N5qs_rZGzxsyZnQDsncOgrN-FlP/view?usp=drive_link)
+* [**Demo_part 6**](https://drive.google.com/file/d/1qmnZsuGkzrynOVnHqH5YfxrJAWihN6dz/view?usp=drive_link)
 
 📖 Quranic NLP Resource Catalog (QUL)
 
@@ -345,21 +340,6 @@ Total: 18+ identified layers
 Architecture onboarding and research entry point.
 📎 https://github.com/Wider-Community/QUD/blob/main/specs/001-quranic-layer-architecture/quickstart.md
 
-🎥 QUD Core Demo Videos
-
-Early prototype demos hosted on Google Drive:
-
-🎬 Demo Part 1
-
-🎬 Demo Part 2
-
-🎬 Demo Part 3
-
-🎬 Demo Part 4
-
-🎬 Demo Part 5
-
-🎬 Demo Part 6
 
 🌐 External Resources
 📖 Quranic NLP Resource Catalog (QUL)
@@ -385,5 +365,3 @@ See the specs/ directory for details.
 
 Research project for Quranic Technologies.
 See the specs/ directory for details.
-
-\
