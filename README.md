@@ -1,367 +1,184 @@
-📘 QUD — Quranic Unified Data
-Quranic Data Layer Architecture Research
+# QUD — Quranic Unified Data
 
-Research Project: Quranic Unified Data for Quranic Technologies
-Status: Experimental · Research-Focused · Not Production Code
+**Quranic Data Layer Architecture Research**
 
-🎯 Overview
-
-QUD is an experimental research project exploring the separation, formalization, and simulation of Quranic data layers.
-
-The primary goal is:
-
-✅ Validated Knowledge and Design Exploration
-❌ Not production software (yet)
-
-This project investigates how Quranic datasets can be decomposed into independent, well-defined layers with clear schemas and relationships.
-
-🔬 Research Questions
-
-RR-001 — Layer Separation Analysis
-What data layers are currently mixed or entangled in existing Quranic datasets?
-
-RR-002 — Schema Design
-Can we formally define schemas for each separated layer?
-
-RR-003 — Layer Simulation
-Can we build a working prototype that demonstrates the proposed architecture?
-
-🗂 Project Structure
-
-experiments/            # Research experiments (one per research question)
-research-tools/         # Reusable research utilities (Tier 2)
-schemas/                # Layer schema definitions (18+ identified layers)
-docs/                   # Research documentation
-  ├── research-log/      # Chronological findings
-  ├── data-layers/       # Layer documentation
-  ├── decisions/         # Architecture Decision Records (ADR)
-  ├── sources/           # Authoritative source documentation
-  └── architecture/      # System architecture documents
-specs/                   # Research specifications
-
-🚀 Getting Started
-Prerequisites
-
-Python 3.11+
-
-pip or uv package manager
-Installation
-# Install core dependencies
-pip install -e .
-
-# Install development dependencies
-pip install -e ".[dev]"
-
-🧱 Code Quality Tiers
-
-| Tier       | Purpose                            | Location               |
-| ---------- | ---------------------------------- | ---------------------- |
-| **Tier 1** | Experimental research code         | `experiments/`         |
-| **Tier 2** | Reusable research utilities        | `research-tools/`      |
-| **Tier 3** | Production pipelines (if required) | `data-infrastructure/` |
-
-🧪 Research Methodology
-
-This project follows a hypothesis-driven research workflow:
-
-Define explicit research questions
-
-Formulate hypotheses with validation criteria
-
-Design experiments to validate or refute hypotheses
-
-Document findings (including negative results)
-
-📊 Datasets
-QS-QIRAAT Datasets
-
-📎 https://github.com/Wider-Community/QUD/tree/main/QS%20-%20QIRAAT
-
-Content:
-
-6 narrations from 3–4 Qira’at
-
-Covers all Quranic words (6,236 ayahs)
-
-Available Formats:
-
-HTML, SQL, XML, CSV, JSON, XLSX, TXT
-
-Sources:
-
-King Fahd Complex editions
-
-Authenticated reciter sources
-
-Glossary & Standards
-🔖 MARQOUM — Naming & Notation Standard
-
-Mandatory for all contributors
-
-Mandatory Attentive Recited Quranic Omni Unified Manual
-
-📎 https://github.com/Wider-Community/QUD/blob/main/MARQOUM%20Quranic%20Manual.md
-
-All developers must follow these naming conventions and notations.
-
-🧩 Architecture & Documentation
-📚 Presentation Layer Outline
-
-Explanation of Quranic layers and their relationships.
-📎 https://github.com/Wider-Community/QUD/tree/main/QUD%20Presentation%20Layer%20Outline
-
-🧪 Experiments
-
-Includes setup verification notebooks and Layer Separation Analysis.
-📎 https://github.com/Wider-Community/QUD/tree/main/experiments
-
-📖 Quranic Data Layers Study (Arabic)
-
-Table explaining each data layer in Arabic.
-📎 https://github.com/Wider-Community/QUD/blob/main/Quranic%20Data%20Layers%20Study.csv
-
-🧬 QUD Data Layer Schemas
-
-Formal schema definitions for:
-
-16 base layers (Layers 0–15)
-
-Additional sub-layers
-
-Total: 18+ identified layers
-
-📎 https://github.com/Wider-Community/QUD/tree/main/schemas
-
-⚡ Quickstart Guide
-
-Architecture onboarding and research entry point.
-📎 https://github.com/Wider-Community/QUD/blob/main/specs/001-quranic-layer-architecture/quickstart.md
-
-🎥 QUD Core Demo Videos
-
-Early prototype demos hosted on Google Drive:
-
-* [**Demo part 1**](https://drive.google.com/file/d/1hwXCKfWG7Ezap8Zt0TfhRllIOZmd0CTd/view?usp=drive_link)
-* [**Demo part 2**](https://drive.google.com/file/d/1sjM7qK2CV7BoaWa9B13E9yDpbbofEZEI/view?usp=drive_link)
-* [**Demo part 3**](https://drive.google.com/file/d/1oPv1JvL9_PthSMnbw7YXii28xlNzHT3C/view?usp=drive_link)
-* [**Demo part 4**](https://drive.google.com/file/d/1leQT5g5JxkP08w0XtkQ0X7GTrbBUPf_5/view?usp=drive_link)
-* [**Demo part 5**](https://drive.google.com/file/d/1vVmY5N5qs_rZGzxsyZnQDsncOgrN-FlP/view?usp=drive_link)
-* [**Demo_part 6**](https://drive.google.com/file/d/1qmnZsuGkzrynOVnHqH5YfxrJAWihN6dz/view?usp=drive_link)
-
-📖 Quranic NLP Resource Catalog (QUL)
-
-Comprehensive catalog of Quranic NLP datasets and tools.
-📎 https://github.com/Wider-Community/QUD/blob/main/QUL_Tarteel_NLP_Resources_Catalog.md
-
-🔓 Open-Source Tools
-
-API Layer Platform
-https://apilayer.com/
-
-OpenRouter SDKs
-https://github.com/OpenRouterTeam
-
-Lightweight SQL Viewer
-https://github.com/Rohithgilla12/data-peek
-
-📜 License
-
-Research project for Quranic Technologies.
-See the specs/ directory for details.
-
-✅ If you want
-
-I can also:
-
-✔ Add badges (Python version, license, status)
-✔ Add architecture diagram section
-✔ Add contribution guidelines
-✔ Add citation section for academic use
-✔ Optimize for GitHub SEO and discoverability
-✔ Make Arabic bilingual version
-✔ Convert this into MkDocs / Docs site
-
-Just tell me what you want next 👍
-
-give me the whole content to copy and paste it in the file 
-
-Perfect 👍
-Here is the full README content ready to copy & paste directly into your README.md file.
-
-Just select everything below and paste it into GitHub or your editor.
-
-# 📘 QUD — Quranic Unified Data  
-### Quranic Data Layer Architecture Research
-
-> **Research Project:** Quranic Unified Data for Quranic Technologies  
 > **Status:** Experimental · Research-Focused · Not Production Code
 
 ---
 
-## 🎯 Overview
+## Overview
 
-QUD is an experimental research project exploring the **separation, formalization, and simulation of Quranic data layers**.
-
-The primary goal is:
-
-> ✅ **Validated Knowledge and Design Exploration**  
-> ❌ Not production software (yet)
-
-This project investigates how Quranic datasets can be decomposed into independent, well-defined layers with clear schemas and relationships.
+QUD is an experimental research project exploring the **separation, formalization, and simulation of Quranic data layers**. The goal is to decompose existing Quranic datasets into independent, well-defined layers with clear schemas and relationships.
 
 ---
 
-## 🔬 Research Questions
+## Research Questions
 
-- **RR-001 — Layer Separation Analysis**  
-  What data layers are currently mixed or entangled in existing Quranic datasets?
-
-- **RR-002 — Schema Design**  
-  Can we formallyly define schemas for each separated layer?
-
-- **RR-003 — Layer Simulation**  
-  Can we build a working prototype that demonstrates the proposed architecture?
+| ID | Question |
+|----|----------|
+| **RR-001** | What data layers are currently mixed in existing Quranic datasets? |
+| **RR-002** | Can we formally define schemas for each separated layer? |
+| **RR-003** | Can we build a working prototype demonstrating the architecture? |
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
-```text
-experiments/            # Research experiments (one per research question)
-research-tools/         # Reusable research utilities (Tier 2)
-schemas/                # Layer schema definitions (18+ identified layers)
-docs/                   # Research documentation
-  ├── research-log/      # Chronological findings
-  ├── data-layers/       # Layer documentation
-  ├── decisions/         # Architecture Decision Records (ADR)
-  ├── sources/           # Authoritative source documentation
-  └── architecture/      # System architecture documents
-specs/                   # Research specifications
+```
+experiments/                        # Research experiments (Tier 1)
+├── 00_setup_verification.ipynb       # Environment validation
+└── rr-001-layer-analysis/
+    ├── README.md                     # Experiment methodology & hypothesis
+    └── field_mapper.py               # Layer analysis tool
 
-🚀 Getting Started
-Prerequisites
+research-tools/                     # Reusable utilities (Tier 2)
+├── validators/
+│   └── schema_validator.py           # JSON Schema validation
+├── analyzers/
+│   └── data_comparator.py            # Cross-Qiraat comparison
+└── data-loaders/
+    └── quran_loader.py               # Quranic text loader
 
-Python 3.11+
+schemas/                            # Layer schema definitions (18+)
+├── README.md                         # Schema documentation v2.0
+├── layer-05-verse-structure/
+│   └── schema.json                   # Example layer schema
+└── cross-layer-mappings/
+    └── entity-mapping-schema.json    # 1:1, 1:N, N:1, N:M relationships
 
-pip or uv package manager
+docs/                               # Documentation
+├── research-log.md                   # Chronological findings
+├── architecture/
+│   └── architectural-principles-v1.md  # Core design principles
+└── data-layers/
+    └── README.md                     # Layer categorization
 
-Installation
+specs/                              # Research specifications
+└── 001-quranic-layer-architecture/
+    ├── spec.md                       # Main spec (RR-001 through RR-015)
+    ├── data-model.md                 # Data structure definitions
+    └── quickstart.md                 # Architecture onboarding
+```
+
+---
+
+## Quick Start
+
+**Prerequisites:** Python 3.11+, pip or uv
+
+```bash
 # Install core dependencies
 pip install -e .
 
 # Install development dependencies
 pip install -e ".[dev]"
+```
 
-🧱 Code Quality Tiers
-Tier	Purpose	Location
-Tier 1	Experimental research code	experiments/
-Tier 2	Reusable research utilities	research-tools/
-Tier 3	Production pipelines (if required)	data-infrastructure/
-🧪 Research Methodology
+---
 
-This project follows a hypothesis-driven research workflow:
+## Key Resources
 
-Define explicit research questions
+| Resource | Description |
+|----------|-------------|
+| [MARQOUM Manual](MARQOUM%20Quranic%20Manual.md) | Naming & notation standard **(mandatory)** |
+| [QS-QIRAAT Datasets](QS%20-%20QIRAAT/) | 6 narrations across multiple formats |
+| [Layer Schemas](schemas/) | 16 base layers + sub-layers |
+| [Quickstart Guide](specs/001-quranic-layer-architecture/quickstart.md) | Architecture onboarding |
+| [Research Log](docs/research-log.md) | Chronological findings |
+| [Quranic Data Layers Study](Quranic%20Data%20Layers%20Study.csv) | Layer explanations (Arabic) |
 
-Formulate hypotheses with validation criteria
+---
 
-Design experiments to validate or refute hypotheses
+<details>
+<summary><strong>Demo Videos</strong></summary>
 
-Document findings (including negative results)
+Early prototype demos:
 
-📊 Datasets
-QS-QIRAAT Datasets
+- [Demo Part 1](https://drive.google.com/file/d/1hwXCKfWG7Ezap8Zt0TfhRllIOZmd0CTd/view?usp=drive_link)
+- [Demo Part 2](https://drive.google.com/file/d/1sjM7qK2CV7BoaWa9B13E9yDpbbofEZEI/view?usp=drive_link)
+- [Demo Part 3](https://drive.google.com/file/d/1oPv1JvL9_PthSMnbw7YXii28xlNzHT3C/view?usp=drive_link)
+- [Demo Part 4](https://drive.google.com/file/d/1leQT5g5JxkP08w0XtkQ0X7GTrbBUPf_5/view?usp=drive_link)
+- [Demo Part 5](https://drive.google.com/file/d/1vVmY5N5qs_rZGzxsyZnQDsncOgrN-FlP/view?usp=drive_link)
+- [Demo Part 6](https://drive.google.com/file/d/1qmnZsuGkzrynOVnHqH5YfxrJAWihN6dz/view?usp=drive_link)
 
-📎 https://github.com/Wider-Community/QUD/tree/main/QS%20-%20QIRAAT
+</details>
 
-Content:
+---
 
-6 narrations from 3–4 Qira’at
+## External Resources
 
-Covers all Quranic words (6,236 ayahs)
-
-Available Formats:
-
-HTML, SQL, XML, CSV, JSON, XLSX, TXT
-
-Sources:
-
-King Fahd Complex editions
-
-Authenticated reciter sources
-
-📘 Glossary & Standards
-🔖 MARQOUM — Naming & Notation Standard
-
-Mandatory for all contributors
-
-Mandatory
-Attentive
-Recited
-Quranic
-Omni
-Unified
-Manual
-
-📎 https://github.com/Wider-Community/QUD/blob/main/MARQOUM%20Quranic%20Manual.md
-
-All developers must follow these naming conventions and notations.
-
-🧩 Architecture & Documentation
-📚 Presentation Layer Outline
-
-Explanation of Quranic layers and their relationships.
-📎 https://github.com/Wider-Community/QUD/tree/main/QUD%20Presentation%20Layer%20Outline
-
-🧪 Experiments
-
-Includes setup verification notebooks and Layer Separation Analysis.
-📎 https://github.com/Wider-Community/QUD/tree/main/experiments
-
-📖 Quranic Data Layers Study (Arabic)
-
-Table explaining each data layer in Arabic.
-📎 https://github.com/Wider-Community/QUD/blob/main/Quranic%20Data%20Layers%20Study.csv
-
-🧬 QUD Data Layer Schemas
-
-Formal schema definitions for:
-
-16 base layers (Layers 0–15)
-
-Additional sub-layers
-
-Total: 18+ identified layers
-
-📎 https://github.com/Wider-Community/QUD/tree/main/schemas
-
-⚡ Quickstart Guide
-
-Architecture onboarding and research entry point.
-📎 https://github.com/Wider-Community/QUD/blob/main/specs/001-quranic-layer-architecture/quickstart.md
-
-
-🌐 External Resources
-📖 Quranic NLP Resource Catalog (QUL)
+### Quranic NLP Resource Catalog (QUL)
 
 Comprehensive catalog of Quranic NLP datasets and tools.
-📎 https://github.com/Wider-Community/QUD/blob/main/QUL_Tarteel_NLP_Resources_Catalog.md
 
-🔓 Open-Source Tools
+[QUL Tarteel NLP Resources Catalog](QUL_Tarteel_NLP_Resources_Catalog.md)
 
-API Layer Platform
-https://apilayer.com/
+### Open-Source Tools
 
-OpenRouter SDKs
-https://github.com/OpenRouterTeam
+| Tool | Description |
+|------|-------------|
+| [API Layer Platform](https://apilayer.com/) | API marketplace |
+| [OpenRouter SDKs](https://github.com/OpenRouterTeam) | LLM routing SDKs |
+| [Data Peek](https://github.com/Rohithgilla12/data-peek) | Lightweight SQL viewer |
 
-Lightweight SQL Viewer
-https://github.com/Rohithgilla12/data-peek
+---
 
-📜 License
+## AI Coding Practices
 
-Research project for Quranic Technologies.
-See the specs/ directory for details.
+> _Section under development_
 
-Research project for Quranic Technologies.
-See the specs/ directory for details.
+Guidelines for AI-assisted development in this repository.
+
+---
+
+## Projects & Issues Conventions
+
+We use **GitHub Projects** to track all research and development work.
+
+### Project Fields
+
+| Field | Options |
+|-------|---------|
+| **System** | `QUD-General`, `Mujarrad`, `Mudmaj`, `Munajjam`, `AI-Research` |
+| **Category** | `Layer-Foundation`, `Semantic-Hashing`, `Cross-Layer-Mapping`, `Architecture`, `Database`, `Backend`, `AI-Research`, `Integration` |
+| **Priority** | `P1-Critical`, `P2-High`, `P3-Medium`, `P4-Low` |
+| **Issue Type** | `Research`, `Design`, `Implementation`, `Documentation`, `Review` |
+
+### Working on an Issue
+
+1. **Assign yourself** to the issue
+2. **Set Start Date** in the project board
+3. **Move to "In Progress"** status
+4. Work on the issue, updating comments as needed
+5. **Set End Date** when complete
+6. **Move to "Done"** and close the issue
+
+### Adding a New Issue
+
+1. Create issue with title format: `[PREFIX-###] Title`
+   - Prefixes: `LF`, `SH`, `CLM`, `MJ`, `MD`, `QB`, `AI`, `MN`
+2. Use this body structure (no metadata - that goes in fields):
+   ```markdown
+   ## Research Questions
+   - **RQ1**: Question here?
+   - **Related**: RR-001, RR-002
+
+   ## Description
+   Description in English.
+
+   الوصف بالعربية.
+
+   ## Acceptance Criteria
+   - [ ] Criterion 1
+   - [ ] Criterion 2
+
+   ## References (Primary)
+   - `/path/to/file.md` - Description
+   ```
+3. Add issue to project and set all 4 fields (System, Category, Priority, Issue Type)
+
+---
+
+## License
+
+Research project for Quranic Technologies. See `specs/` for details.
