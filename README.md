@@ -123,8 +123,9 @@ Comprehensive catalog of Quranic NLP datasets and tools.
 
 ---
 
-## Related paper 
-[link](https://www.sciencedirect.com/science/article/pii/S235234092500664X)
+## Research Papers
+[Noor Project](https://www.sciencedirect.com/science/article/pii/S235234092500664X) (**Very relevant**): A complete, multi-layered quranic treebank dataset with hybrid syntactic annotations for classical arabic processing
+
 
 --- 
 
