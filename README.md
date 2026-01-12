@@ -123,8 +123,10 @@ Comprehensive catalog of Quranic NLP datasets and tools.
 
 ---
 
-## [Related Paper](https://www.sciencedirect.com/science/article/pii/S235234092500664X)
+## Related paper 
+[link](https://www.sciencedirect.com/science/article/pii/S235234092500664X)
 
+--- 
 
 ## AI Coding Practices
 
