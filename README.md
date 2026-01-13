@@ -139,7 +139,7 @@ Guidelines for AI-assisted development in this repository.
 
 ## Projects & Issues Conventions
 
-We use **GitHub Projects** to track all research and development work.
+We use **GitHub Projects** to track all research and development work. [QUD Research & Development Project](https://github.com/orgs/Wider-Community/projects/1)
 
 ### Project Fields
 
@@ -156,8 +156,10 @@ We use **GitHub Projects** to track all research and development work.
 2. **Set Start Date** in the project board
 3. **Move to "In Progress"** status
 4. Work on the issue, updating comments as needed
-5. **Set End Date** when complete
-6. **Move to "Done"** and close the issue
+5. Submit a PR, request reviewers and move to "In Review"
+6. Implement reviewer feedback
+7. **Set End Date** when complete
+8. **Move to "Done"** and close the issue
 
 ### Adding a New Issue
 
