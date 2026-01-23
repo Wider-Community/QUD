@@ -1,0 +1,108 @@
+{
+  "$schema": "https://qud.itqan.community/schemas/base-layers.json",
+  "schema_name": "QUD Base Data Layers",
+  "version": "1.0.0",
+  "date": "2025-01-23",
+  "description": "Canonical definition of QUD Quranic data layers with 3-letter codes",
+  "layers": [
+    {
+      "code": "CHR",
+      "name": "Character Composition",
+      "folder": "chr-character-composition",
+      "description": "Base letter sequences with phonetic metadata - atomic units of Quranic text"
+    },
+    {
+      "code": "SYM",
+      "name": "Character Symbols",
+      "folder": "sym-character-symbols",
+      "description": "Diacritical marks (tashkeel), tajweed symbols, waqf marks, aya markers"
+    },
+    {
+      "code": "TJW",
+      "name": "Tajweed Rules",
+      "folder": "tjw-tajweed-rules",
+      "description": "Relational metadata between characters (idgham, ikhfa, iqlab, izhar, madd)"
+    },
+    {
+      "code": "WRD",
+      "name": "Word Structure",
+      "folder": "wrd-word-structure",
+      "description": "Word boundaries, morphological composition, part-of-speech"
+    },
+    {
+      "code": "UTH",
+      "name": "Orthographic Uthmani",
+      "folder": "uth-orthographic-uthmani",
+      "description": "Traditional Quranic orthography (Rasm Uthmani)"
+    },
+    {
+      "code": "QSY",
+      "name": "Orthographic Qiasy",
+      "folder": "qsy-orthographic-qiasy",
+      "description": "Modern standard Arabic orthography (Qiasy/Imla'i script)"
+    },
+    {
+      "code": "SNT",
+      "name": "Sentence Structure",
+      "folder": "snt-sentence-structure",
+      "description": "Grammatical composition, waqf (stopping) rules, ibtida (starting) rules",
+      "data_status": "missing_from_qs_qiraat"
+    },
+    {
+      "code": "AYA",
+      "name": "Verse Structure",
+      "folder": "aya-verse-structure",
+      "description": "Verse enumeration and boundaries - primary organizational unit",
+      "note": "Hafs: 6236 verses, Warsh: 6214 verses"
+    },
+    {
+      "code": "SUR",
+      "name": "Surah Structure",
+      "folder": "sur-surah-structure",
+      "description": "Chapter metadata and organization (114 surahs)"
+    },
+    {
+      "code": "QIR",
+      "name": "Qiraat Structure",
+      "folder": "qir-qiraat-structure",
+      "description": "Foundational metadata for the 10 canonical Qiraat and their narrations"
+    },
+    {
+      "code": "MSH",
+      "name": "Mushaf Structure",
+      "folder": "msh-mushaf-structure",
+      "description": "Complete manuscript composition - root of layout hierarchy"
+    },
+    {
+      "code": "DIV",
+      "name": "Division Structure",
+      "folder": "div-division-structure",
+      "description": "Traditional organizational segments (Juz, Hizb, Rub) for recitation scheduling"
+    },
+    {
+      "code": "PAG",
+      "name": "Page Layout",
+      "folder": "pag-page-layout",
+      "description": "Page-level composition and pagination"
+    },
+    {
+      "code": "LIN",
+      "name": "Line Layout",
+      "folder": "lin-line-layout",
+      "description": "Line-level composition and line breaks"
+    },
+    {
+      "code": "EDN",
+      "name": "Edition Variants",
+      "folder": "edn-edition-variants",
+      "description": "Publisher-specific formatting differences (King Fahd Complex, Cairo, etc.)"
+    },
+    {
+      "code": "RDR",
+      "name": "Readers & Narrators",
+      "folder": "rdr-readers-narrators",
+      "description": "Biographical data for the 10 canonical readers and their narrators",
+      "data_status": "missing_from_qs_qiraat"
+    }
+  ]
+}
