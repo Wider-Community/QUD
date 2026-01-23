@@ -1,50 +1,111 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://qud.itqan.community/schemas/cross-layer-mappings/entity-mapping.json",
-  "title": "EntityMapping: Cross-Layer Relationship Schema",
-  "description": "Core mapping entity linking entities across data layers - handles expansion/contraction cases (1:N, N:1, N:M)",
+  "title": "EntityMapping: Cross-Layer and Cross-Context Relationship Schema",
+  "description": "Core mapping entity linking entities across data layers and contexts. Supports same-layer cross-context mappings (e.g., AYA:hafs ↔ AYA:warsh) and cross-layer mappings. Handles expansion/contraction cases (1:N, N:1, N:M). Aligns with MUDMAJ storage architecture.",
   "type": "object",
   "required": [
     "mapping_id",
-    "source_layer",
-    "source_entity_id",
-    "target_layer",
-    "target_entity_ids",
+    "source",
+    "target",
     "mapping_type",
     "cardinality",
     "mapping_version"
   ],
+  "definitions": {
+    "layer_code": {
+      "type": "string",
+      "enum": [
+        "CHR", "SYM", "TJW", "WRD", "UTH", "QSY",
+        "SNT", "AYA", "SUR", "QIR", "MSH",
+        "DIV", "PAG", "LIN", "EDN", "RDR"
+      ],
+      "description": "3-letter layer code (matches folder naming convention)"
+    },
+    "context": {
+      "type": "object",
+      "description": "Context parameters that determine which version of a layer to use",
+      "properties": {
+        "qiraah": {
+          "type": "string",
+          "description": "Qiraah/narration identifier (e.g., 'hafs', 'warsh', 'qaloun')"
+        },
+        "orthography": {
+          "type": "string",
+          "enum": ["uthmani", "qiasy", "imlaai"],
+          "description": "Orthographic system"
+        },
+        "edition": {
+          "type": "string",
+          "description": "Edition identifier (e.g., 'king_fahd_complex', 'cairo')"
+        }
+      },
+      "additionalProperties": true
+    },
+    "layer_reference": {
+      "type": "object",
+      "description": "Compound layer identifier including code, context, and version",
+      "required": ["code", "context"],
+      "properties": {
+        "code": {
+          "$ref": "#/definitions/layer_code"
+        },
+        "context": {
+          "$ref": "#/definitions/context"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$",
+          "default": "1.0.0",
+          "description": "Layer version (semver format)"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
   "properties": {
     "mapping_id": {
       "type": "string",
       "format": "uuid",
       "description": "Unique identifier for this mapping"
     },
-    "source_layer": {
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 14,
-      "description": "Source layer number (0-14)"
-    },
-    "source_entity_id": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Entity UUID in source layer"
-    },
-    "target_layer": {
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 14,
-      "description": "Target layer number (0-14)"
-    },
-    "target_entity_ids": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uuid"
+    "source": {
+      "type": "object",
+      "description": "Source layer reference and entity",
+      "required": ["layer", "entity_id"],
+      "properties": {
+        "layer": {
+          "$ref": "#/definitions/layer_reference",
+          "description": "Compound layer identifier (code + context + version)"
+        },
+        "entity_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Entity UUID in source layer"
+        }
       },
-      "minItems": 1,
-      "description": "One or more target entities (handles 1-to-many)"
+      "additionalProperties": false
+    },
+    "target": {
+      "type": "object",
+      "description": "Target layer reference and entities",
+      "required": ["layer", "entity_ids"],
+      "properties": {
+        "layer": {
+          "$ref": "#/definitions/layer_reference",
+          "description": "Compound layer identifier (code + context + version)"
+        },
+        "entity_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "minItems": 1,
+          "description": "One or more target entity UUIDs (handles 1-to-many)"
+        }
+      },
+      "additionalProperties": false
     },
     "mapping_type": {
       "type": "string",
@@ -54,9 +115,10 @@
         "identity",
         "derivation",
         "aggregation",
-        "composition"
+        "composition",
+        "cross_context"
       ],
-      "description": "Type of relationship between source and target"
+      "description": "Type of relationship: expansion (1→N), contraction (N→1), identity (semantic equivalence), derivation (generated from), aggregation (composed of), composition (part of), cross_context (same entity different context)"
     },
     "cardinality": {
       "type": "string",
@@ -65,66 +127,73 @@
     },
     "position_metadata": {
       "type": "object",
-      "description": "Ordering information for expansion/contraction cases",
+      "description": "Ordering and positional information for expansion/contraction cases",
       "properties": {
         "order": {
           "type": "array",
           "items": { "type": "integer" },
-          "description": "Sequential order of target entities"
+          "description": "Sequential order of target entities (0-indexed)"
         },
-        "context": {
+        "split_point": {
           "type": "string",
-          "description": "Contextual information (e.g., 'word-final', 'mid-verse')"
+          "description": "Where the split occurs (e.g., 'character-offset-45', 'word-boundary')"
+        },
+        "positional_context": {
+          "type": "string",
+          "description": "Contextual info (e.g., 'word-final', 'verse-boundary', 'mid-verse')"
         },
         "character_offsets": {
           "type": "array",
           "items": { "type": "integer" },
           "description": "Character position offsets for precise tracking"
         }
-      }
+      },
+      "additionalProperties": true
     },
     "mapping_version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "description": "Schema version this mapping corresponds to (semver format)"
-    },
-    "semantic_hash": {
-      "type": "string",
-      "pattern": "^sha256:[0-9a-f]{64}$",
-      "description": "SHA-256 hash representing semantic relationship"
+      "description": "Schema version of this mapping (semver format)"
     },
     "provenance": {
       "type": "object",
-      "description": "Which Qiraah/narration/orthography/edition this mapping is specific to",
+      "description": "Additional metadata about mapping origin (context info now in layer references)",
       "properties": {
-        "qiraah_narration_from": {
+        "source_dataset": {
           "type": "string",
-          "description": "Source narration (e.g., 'hafs_an_asim')"
+          "description": "Origin dataset (e.g., 'QS-QIRAAT-v2.0')"
         },
-        "qiraah_narration_to": {
+        "generation_method": {
           "type": "string",
-          "description": "Target narration (e.g., 'warsh_an_nafi')"
+          "enum": ["extracted", "generated", "manual", "computed"],
+          "description": "How this mapping was created"
         },
-        "orthography_from": {
+        "scholarly_reference": {
           "type": "string",
-          "enum": ["uthmani", "qiasy", "imlaai"],
-          "description": "Source orthographic system"
+          "description": "Reference to scholarly source validating this mapping"
         },
-        "orthography_to": {
+        "created_at": {
           "type": "string",
-          "enum": ["uthmani", "qiasy", "imlaai"],
-          "description": "Target orthographic system"
-        },
-        "edition": {
-          "type": "string",
-          "description": "Edition this mapping applies to"
+          "format": "date-time",
+          "description": "When this mapping was created"
         }
-      }
+      },
+      "additionalProperties": true
     },
     "bidirectional_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Reference to reverse mapping (for efficient traversal)"
+      "description": "Reference to reverse mapping UUID (for efficient bidirectional traversal)"
+    },
+    "canonical_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Canonical identity UUID linking semantically equivalent entities across all contexts (e.g., canonical_verse_id for Ayat al-Kursi)"
+    },
+    "semantic_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 hash representing semantic relationship (enables semantic equivalence queries)"
     },
     "validation_status": {
       "type": "object",
@@ -146,6 +215,11 @@
           "minimum": 0,
           "maximum": 1,
           "description": "Confidence level in this mapping (0.0-1.0)"
+        },
+        "scholarly_review": {
+          "type": "string",
+          "enum": ["pending", "approved", "rejected"],
+          "description": "Status of scholarly review"
         }
       }
     }
@@ -153,44 +227,108 @@
   "additionalProperties": false,
   "examples": [
     {
-      "mapping_id": "550e8400-e29b-41d4-a716-446655440000",
-      "source_layer": 0,
-      "source_entity_id": "char-uthmani-taa-marbuta-uuid",
-      "target_layer": 0,
-      "target_entity_ids": ["char-qiasy-ha-uuid", "char-qiasy-taa-uuid"],
-      "mapping_type": "expansion",
-      "cardinality": "1:2",
+      "_comment": "Cross-context mapping: Hafs verse ↔ Warsh verse (verse boundary variation)",
+      "mapping_id": "660e8400-e29b-41d4-a716-446655440001",
+      "source": {
+        "layer": {
+          "code": "AYA",
+          "context": { "qiraah": "hafs" },
+          "version": "1.0.0"
+        },
+        "entity_id": "550e8400-e29b-41d4-a716-446655440100"
+      },
+      "target": {
+        "layer": {
+          "code": "AYA",
+          "context": { "qiraah": "warsh" },
+          "version": "1.0.0"
+        },
+        "entity_ids": [
+          "550e8400-e29b-41d4-a716-446655440200",
+          "550e8400-e29b-41d4-a716-446655440201"
+        ]
+      },
+      "mapping_type": "cross_context",
+      "cardinality": "1:N",
       "position_metadata": {
-        "order": [0, 1],
-        "context": "word-final"
+        "positional_context": "verse-boundary-variation",
+        "split_point": "character-offset-45",
+        "order": [0, 1]
       },
       "mapping_version": "1.0.0",
-      "semantic_hash": "sha256:abc123...",
+      "canonical_id": "770e8400-e29b-41d4-a716-446655440300",
       "provenance": {
-        "orthography_from": "uthmani",
-        "orthography_to": "qiasy"
+        "source_dataset": "QS-QIRAAT-v2.0",
+        "generation_method": "computed"
       },
-      "bidirectional_ref": "reverse-mapping-uuid"
+      "bidirectional_ref": "660e8400-e29b-41d4-a716-446655440002"
     },
     {
-      "mapping_id": "660e8400-e29b-41d4-a716-446655440001",
-      "source_layer": 5,
-      "source_entity_id": "hafs-surah2-verse20-uuid",
-      "target_layer": 5,
-      "target_entity_ids": ["warsh-surah2-verse19-uuid", "warsh-surah2-verse20-uuid"],
-      "mapping_type": "contraction",
-      "cardinality": "1:2",
+      "_comment": "Orthographic expansion: 1 Uthmani char → 2 Qiasy chars (same qiraah, different orthography)",
+      "mapping_id": "550e8400-e29b-41d4-a716-446655440000",
+      "source": {
+        "layer": {
+          "code": "UTH",
+          "context": { "qiraah": "hafs", "orthography": "uthmani" },
+          "version": "1.0.0"
+        },
+        "entity_id": "880e8400-e29b-41d4-a716-446655440100"
+      },
+      "target": {
+        "layer": {
+          "code": "QSY",
+          "context": { "qiraah": "hafs", "orthography": "qiasy" },
+          "version": "1.0.0"
+        },
+        "entity_ids": [
+          "880e8400-e29b-41d4-a716-446655440200",
+          "880e8400-e29b-41d4-a716-446655440201"
+        ]
+      },
+      "mapping_type": "expansion",
+      "cardinality": "1:N",
       "position_metadata": {
-        "context": "verse-boundary-variation",
-        "character_offsets": [0, 45]
+        "positional_context": "word-final",
+        "order": [0, 1]
       },
       "mapping_version": "1.0.0",
-      "semantic_hash": "sha256:def456...",
+      "semantic_hash": "sha256:abc123def456789012345678901234567890123456789012345678901234abcd",
       "provenance": {
-        "qiraah_narration_from": "hafs_an_asim",
-        "qiraah_narration_to": "warsh_an_nafi"
+        "generation_method": "computed",
+        "scholarly_reference": "Uthmani-Qiasy transformation rules"
       },
-      "bidirectional_ref": "reverse-mapping-uuid"
+      "bidirectional_ref": "550e8400-e29b-41d4-a716-446655440001"
+    },
+    {
+      "_comment": "Cross-layer mapping: Page → Verse (same context)",
+      "mapping_id": "990e8400-e29b-41d4-a716-446655440000",
+      "source": {
+        "layer": {
+          "code": "PAG",
+          "context": { "qiraah": "hafs", "edition": "king_fahd_complex" },
+          "version": "1.0.0"
+        },
+        "entity_id": "990e8400-e29b-41d4-a716-446655440100"
+      },
+      "target": {
+        "layer": {
+          "code": "AYA",
+          "context": { "qiraah": "hafs" },
+          "version": "1.0.0"
+        },
+        "entity_ids": [
+          "550e8400-e29b-41d4-a716-446655440100",
+          "550e8400-e29b-41d4-a716-446655440101",
+          "550e8400-e29b-41d4-a716-446655440102"
+        ]
+      },
+      "mapping_type": "composition",
+      "cardinality": "1:N",
+      "mapping_version": "1.0.0",
+      "provenance": {
+        "source_dataset": "QS-QIRAAT-v2.0",
+        "generation_method": "extracted"
+      }
     }
   ]
 }

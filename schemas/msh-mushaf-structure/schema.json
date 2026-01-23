@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/msh-mushaf-structure.json",
+  "title": "MSH: Mushaf Structure",
+  "description": "Complete manuscript text for each narration",
+  "version": "1.0.0",
+  "layer_code": "MSH",
+  "type": "object",
+  "required": ["mushaf_id", "narration_ref", "total_verses", "total_characters"],
+  "properties": {
+    "mushaf_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this mushaf instance"
+    },
+    "narration_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to QIR (Qiraat Structure)"
+    },
+    "edition_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to EDN (Edition Variants) - optional"
+    },
+    "composition_rules": {
+      "type": "object",
+      "description": "How content layers (CHR, SYM, WRD, etc.) are composed for this mushaf",
+      "properties": {
+        "layer_composition": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "generation_method": {
+          "type": "string",
+          "enum": ["extracted", "generated", "composed"]
+        }
+      }
+    },
+    "complete_text": {
+      "type": "string",
+      "description": "Full Quran text in this narration (derived from layers)"
+    },
+    "provenance": {
+      "type": "string",
+      "description": "Source authority (e.g., 'King Fahd Complex Hafs v2.0')"
+    },
+    "total_verses": {
+      "type": "integer",
+      "minimum": 6000,
+      "description": "Total verse count for this mushaf/narration (Hafs:6236, Warsh:6214)"
+    },
+    "total_characters": {
+      "type": "integer",
+      "minimum": 300000,
+      "description": "Total character count (Hafs:323015)"
+    }
+  },
+  "additionalProperties": false
+}

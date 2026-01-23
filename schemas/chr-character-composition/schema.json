@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/chr-character-composition.json",
+  "title": "CHR: Character Composition",
+  "description": "Base letter sequences with phonetic metadata - the atomic units of Quranic text",
+  "version": "1.0.0",
+  "layer_code": "CHR",
+  "type": "object",
+  "required": [
+    "character_id",
+    "narration_ref",
+    "verse_ref",
+    "position",
+    "base_letter",
+    "phonetic_class",
+    "orthography_type"
+  ],
+  "properties": {
+    "character_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this character instance"
+    },
+    "narration_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to QIR (Qiraat Structure) - Which narration this character belongs to"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Character position in verse (0-indexed)"
+    },
+    "base_letter": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF]$",
+      "description": "Single Unicode codepoint for base Arabic letter (no diacritics)"
+    },
+    "phonetic_class": {
+      "type": "string",
+      "enum": [
+        "consonant",
+        "long_vowel",
+        "hamza",
+        "alif",
+        "waw",
+        "ya",
+        "noon",
+        "meem",
+        "lam",
+        "ra",
+        "qalqalah",
+        "ghunnah_letter",
+        "other"
+      ],
+      "description": "Phonetic classification of the letter"
+    },
+    "tajweed_class": {
+      "type": "string",
+      "enum": [
+        "qalqalah",
+        "ghunnah",
+        "shamsiyyah",
+        "qamariyyah",
+        "madd",
+        "leen",
+        "idgham",
+        "ikhfa",
+        "iqlab",
+        "izhar",
+        "none"
+      ],
+      "description": "Tajweed classification for pronunciation rules"
+    },
+    "orthography_type": {
+      "type": "string",
+      "enum": ["uthmani", "qiasy", "imlaai"],
+      "description": "Which writing system this character follows"
+    },
+    "word_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to WRD (Word Structure) - which word this character belongs to"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/wrd-word-structure.json",
+  "title": "WRD: Word Structure",
+  "description": "Word boundaries and morphological composition",
+  "version": "1.0.0",
+  "layer_code": "WRD",
+  "type": "object",
+  "required": [
+    "word_id",
+    "verse_ref",
+    "word_position",
+    "character_refs"
+  ],
+  "properties": {
+    "word_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this word instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "word_position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Word index in verse (0-indexed)"
+    },
+    "character_range": {
+      "type": "array",
+      "items": { "type": "integer" },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "[start_pos, end_pos] referencing CHR character positions"
+    },
+    "character_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "minItems": 1,
+      "description": "UUIDs of CHR (Character Composition) entities composing this word"
+    },
+    "morphology": {
+      "type": "object",
+      "properties": {
+        "root": {
+          "type": "string",
+          "pattern": "^[\u0600-\u06FF]+$",
+          "description": "Arabic root letters"
+        },
+        "pattern": {
+          "type": "string",
+          "description": "Morphological pattern (وزن)"
+        },
+        "affixes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Prefixes and suffixes"
+        }
+      },
+      "description": "Morphological analysis (if available)"
+    },
+    "word_count_contribution": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 1,
+      "description": "Usually 1, may be 0 for aya marks"
+    },
+    "word_type": {
+      "type": "string",
+      "enum": ["noun", "verb", "particle", "pronoun", "preposition", "conjunction", "aya_mark", "other"],
+      "description": "Part of speech classification"
+    },
+    "sentence_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to SNT (Sentence Structure) - optional, if sentence data available"
+    }
+  },
+  "additionalProperties": false
+}

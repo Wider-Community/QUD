@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/div-division-structure.json",
+  "title": "DIV: Division Structure",
+  "description": "Traditional organizational segments (Juz, Hizb, Rub) for recitation scheduling",
+  "version": "1.0.0",
+  "layer_code": "DIV",
+  "type": "object",
+  "required": ["division_id", "mushaf_ref", "division_type", "division_number", "start_verse_ref"],
+  "properties": {
+    "division_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this division"
+    },
+    "mushaf_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to MSH (Mushaf Structure)"
+    },
+    "division_type": {
+      "type": "string",
+      "enum": ["juz", "hizb", "rub", "quarter"],
+      "description": "Type of division"
+    },
+    "division_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Sequential number within type (1-30 for juz, 1-60 for hizb, etc.)"
+    },
+    "start_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "end_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure) - optional if known"
+    },
+    "start_character_position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Character offset within start verse (for mid-verse divisions)"
+    },
+    "narration_specific": {
+      "type": "boolean",
+      "default": false,
+      "description": "Do division boundaries vary by narration?"
+    }
+  },
+  "additionalProperties": false
+}

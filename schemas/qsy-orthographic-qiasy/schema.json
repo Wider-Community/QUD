@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/qsy-orthographic-qiasy.json",
+  "title": "QSY: Orthographic Qiasy",
+  "description": "Modern standard Arabic orthography (Qiasy/Imla'i script)",
+  "version": "1.0.0",
+  "layer_code": "QSY",
+  "type": "object",
+  "required": [
+    "orthography_id",
+    "verse_ref",
+    "qiasy_text"
+  ],
+  "properties": {
+    "orthography_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this Qiasy text instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "qiasy_text": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Rendered text using modern standard orthography"
+    },
+    "transformation_rules": {
+      "type": "object",
+      "description": "Uthmani→Qiasy rules applied",
+      "properties": {
+        "alif_normalization": { "type": "array", "items": { "type": "string" } },
+        "hamza_normalization": { "type": "array", "items": { "type": "string" } },
+        "taa_marbuta_handling": { "type": "string" },
+        "yaa_normalization": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "uthmani_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to UTH (Orthographic Uthmani) - source Uthmani orthography"
+    }
+  },
+  "additionalProperties": false
+}

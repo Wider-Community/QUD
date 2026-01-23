@@ -48,7 +48,17 @@
       "Bash(xargs -I {} git show HEAD:{})",
       "Bash(git -C /Users/mac/Developer/Software-Projects/QUD log --all -p --diff-filter=D -- \"*QUD*\")",
       "Bash(git -C /Users/mac/Developer/Software-Projects/QUD show HEAD:\"QUD Presentation Layer/keynote_slides_export.001.md\")",
-      "Bash(git -C /Users/mac/Developer/Software-Projects/QUD diff --name-only --diff-filter=D HEAD)"
+      "Bash(git -C /Users/mac/Developer/Software-Projects/QUD diff --name-only --diff-filter=D HEAD)",
+      "Bash(diff:*)",
+      "Bash(for f in /mnt/c/Users/ahmed/Desktop/QUD³/QUD/schemas/layer-*/schema.json)",
+      "Bash(do python3 -c \"import json; json.load\\(open\\(''$f''\\)\\)\")",
+      "Bash(for f in schemas/*/schema.json)",
+      "Bash(gh project:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(for i in 52 53 54 55)",
+      "Bash(do echo \"=== Issue #$i ===\")",
+      "Bash(sync)"
     ],
     "deny": [],
     "ask": []

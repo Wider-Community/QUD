@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/snt-sentence-structure.json",
+  "title": "SNT: Sentence Structure",
+  "description": "Grammatical composition, waqf (stopping) rules, ibtida (starting) rules",
+  "version": "1.0.0",
+  "layer_code": "SNT",
+  "type": "object",
+  "required": ["sentence_id", "verse_ref", "word_refs"],
+  "properties": {
+    "sentence_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this sentence instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "word_range": {
+      "type": "array",
+      "items": { "type": "integer" },
+      "minItems": 2,
+      "maxItems": 2,
+      "description": "[start_word, end_word] referencing WRD word positions"
+    },
+    "word_refs": {
+      "type": "array",
+      "items": { "type": "string", "format": "uuid" },
+      "minItems": 1,
+      "description": "UUIDs of WRD (Word Structure) entities composing this sentence"
+    },
+    "grammar_type": {
+      "type": "string",
+      "enum": ["nominal", "verbal", "conditional", "interrogative", "imperative", "other"],
+      "description": "Grammatical classification"
+    },
+    "waqf_rule": {
+      "type": "string",
+      "enum": ["must_stop", "permitted_stop", "continue", "not_permitted", "test_stop"],
+      "description": "Waqf (stopping) rule at sentence end"
+    },
+    "ibtida_rule": {
+      "type": "string",
+      "enum": ["permitted_start", "not_permitted", "recommended_start"],
+      "description": "Ibtida (starting) rule"
+    },
+    "sentence_position": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Sentence index within verse"
+    },
+    "note": {
+      "type": "string",
+      "const": "SNT layer is MISSING from QS-QIRAAT dataset - requires external linguistic database",
+      "description": "Implementation note"
+    }
+  },
+  "additionalProperties": false
+}

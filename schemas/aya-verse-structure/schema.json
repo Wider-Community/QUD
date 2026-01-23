@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/aya-verse-structure.json",
+  "title": "AYA: Verse Structure",
+  "description": "Verse enumeration and boundaries - the primary organizational unit of the Quran",
+  "version": "1.0.0",
+  "layer_code": "AYA",
+  "type": "object",
+  "required": [
+    "verse_id",
+    "narration_ref",
+    "surah_ref",
+    "verse_number"
+  ],
+  "properties": {
+    "verse_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this verse instance within a specific narration"
+    },
+    "narration_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to QIR (Qiraat Structure)"
+    },
+    "surah_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to SUR (Surah Structure)"
+    },
+    "verse_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Verse number within surah (position-based, varies by narration)"
+    },
+    "verse_number_alt": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "description": "Alternative numbering schemes if differs across narrations"
+    },
+    "start_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to CHR (Character Composition) - first character UUID"
+    },
+    "end_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to CHR (Character Composition) - last character UUID"
+    },
+    "character_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total characters in this verse"
+    },
+    "word_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total words in this verse"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/uth-orthographic-uthmani.json",
+  "title": "UTH: Orthographic Uthmani",
+  "description": "Uthmani script (Rasm Uthmani) - traditional Quranic orthography",
+  "version": "1.0.0",
+  "layer_code": "UTH",
+  "type": "object",
+  "required": [
+    "orthography_id",
+    "verse_ref",
+    "uthmanic_text",
+    "character_refs"
+  ],
+  "properties": {
+    "orthography_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this Uthmani text instance"
+    },
+    "verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "uthmanic_text": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Rendered text using Rasm Uthmani rules"
+    },
+    "character_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "UUIDs of CHR (Character Composition) entities composing this text"
+    },
+    "symbol_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "description": "UUIDs of SYM (Character Symbols) entities"
+    },
+    "script_rules": {
+      "type": "object",
+      "description": "Specific Uthmanic orthographic rules applied",
+      "properties": {
+        "hamza_handling": { "type": "string" },
+        "alif_variants": { "type": "array", "items": { "type": "string" } },
+        "taa_marbuta_rules": { "type": "string" },
+        "yaa_variants": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "qiasy_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to QSY (Orthographic Qiasy) - corresponding Qiasy orthography"
+    }
+  },
+  "additionalProperties": false
+}

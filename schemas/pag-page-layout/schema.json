@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/pag-page-layout.json",
+  "title": "PAG: Page Layout",
+  "description": "Page-level composition and pagination",
+  "version": "1.0.0",
+  "layer_code": "PAG",
+  "type": "object",
+  "required": ["page_id", "mushaf_ref", "page_number", "start_verse_ref", "end_verse_ref"],
+  "properties": {
+    "page_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this page"
+    },
+    "mushaf_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to MSH (Mushaf Structure)"
+    },
+    "page_number": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Page number in mushaf"
+    },
+    "start_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "end_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to AYA (Verse Structure)"
+    },
+    "start_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to CHR (Character Composition) - if page starts mid-verse"
+    },
+    "end_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to CHR (Character Composition) - if page ends mid-verse"
+    },
+    "line_count": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 15,
+      "description": "Lines per page (typically 15)"
+    }
+  },
+  "additionalProperties": false
+}

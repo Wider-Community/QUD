@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/tjw-tajweed-rules.json",
+  "title": "TJW: Tajweed Rules",
+  "description": "Relational metadata between characters (tajweed rules requiring context, idgham relationships, etc.)",
+  "version": "1.0.0",
+  "layer_code": "TJW",
+  "type": "object",
+  "required": [
+    "pair_id",
+    "character_1_ref",
+    "character_2_ref",
+    "pair_type",
+    "tajweed_rule"
+  ],
+  "properties": {
+    "pair_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this pair relationship"
+    },
+    "character_1_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to CHR (Character Composition) - First character in relationship"
+    },
+    "character_2_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to CHR (Character Composition) - Second character in relationship"
+    },
+    "pair_type": {
+      "type": "string",
+      "enum": [
+        "idgham",
+        "ikhfa",
+        "qalb",
+        "izhar",
+        "iqlab",
+        "madd",
+        "leen",
+        "ghunnah",
+        "qalqalah"
+      ],
+      "description": "Type of tajweed relationship between characters"
+    },
+    "tajweed_rule": {
+      "type": "string",
+      "description": "Specific tajweed rule governing this pair"
+    },
+    "phonetic_transformation": {
+      "type": "string",
+      "description": "How pronunciation changes due to pairing"
+    },
+    "narration_specific": {
+      "type": "boolean",
+      "default": false,
+      "description": "Does this pairing vary by narration?"
+    },
+    "word_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to WRD (Word Structure) - which word contains this character pair"
+    }
+  },
+  "additionalProperties": false
+}

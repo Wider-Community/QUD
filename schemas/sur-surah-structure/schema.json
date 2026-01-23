@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/sur-surah-structure.json",
+  "title": "SUR: Surah Structure",
+  "description": "Chapter metadata and organization",
+  "version": "1.0.0",
+  "layer_code": "SUR",
+  "type": "object",
+  "required": [
+    "surah_id",
+    "surah_number",
+    "surah_name_ar",
+    "surah_name_en",
+    "revelation_type",
+    "verse_count"
+  ],
+  "properties": {
+    "surah_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this surah"
+    },
+    "surah_number": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 114,
+      "description": "Surah number (1-114)"
+    },
+    "surah_name_ar": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Arabic name (e.g., الفاتحة)"
+    },
+    "surah_name_en": {
+      "type": "string",
+      "description": "English transliteration (e.g., Al-Fatiha)"
+    },
+    "surah_name_translation": {
+      "type": "string",
+      "description": "Meaning in English (e.g., The Opening)"
+    },
+    "revelation_type": {
+      "type": "string",
+      "enum": ["makki", "madani"],
+      "description": "Makki or Madani revelation"
+    },
+    "verse_count": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Total verses in this surah (may vary by narration)"
+    },
+    "verse_count_by_narration": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "description": "Verse counts per narration {narration_id: count}"
+    },
+    "revelation_order": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 114,
+      "description": "Chronological revelation sequence"
+    },
+    "themes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Topical themes (optional enrichment)"
+    },
+    "mushaf_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to MSH (Mushaf Structure)"
+    }
+  },
+  "additionalProperties": false
+}
