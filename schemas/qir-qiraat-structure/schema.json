@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/qir-qiraat-structure.json",
+  "title": "QIR: Qiraat Structure",
+  "description": "Foundational metadata for Qiraat systems and narrations (القراءات العشر)",
+  "type": "object",
+  "required": [
+    "narration_id",
+    "reader_name_ar",
+    "reader_name_en",
+    "narrator_name_ar",
+    "narrator_name_en",
+    "full_name",
+    "canonical_category"
+  ],
+  "properties": {
+    "narration_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this narration"
+    },
+    "reader_name_ar": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Reader (narrator) name in Arabic (e.g., حفص)"
+    },
+    "reader_name_en": {
+      "type": "string",
+      "description": "Reader (narrator) name transliterated (e.g., Hafs)"
+    },
+    "narrator_name_ar": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Imam (Qari) name in Arabic (e.g., عاصم)"
+    },
+    "narrator_name_en": {
+      "type": "string",
+      "description": "Imam (Qari) transliterated (e.g., Asim)"
+    },
+    "full_name": {
+      "type": "string",
+      "description": "Combined narration (e.g., 'حفص عن عاصم' / 'Hafs 'an 'Asim')"
+    },
+    "qiraah_rules": {
+      "type": "object",
+      "description": "Tajweed rules specific to this narration",
+      "properties": {
+        "idgham_rules": { "type": "array", "items": { "type": "string" } },
+        "madd_rules": { "type": "array", "items": { "type": "string" } },
+        "pronunciation_variants": { "type": "object" },
+        "pause_rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "canonical_category": {
+      "type": "string",
+      "enum": [
+        "ten_canonical",
+        "additional",
+        "nafi",
+        "ibn_kathir",
+        "abu_amr",
+        "ibn_amir",
+        "asim",
+        "hamzah",
+        "al_kisai",
+        "abu_jafar",
+        "yaqub",
+        "khalaf"
+      ],
+      "description": "One of 10 canonical Qiraat (العشر) or additional"
+    },
+    "source_authority": {
+      "type": "string",
+      "description": "Reference to isnad chain/scholarly source"
+    },
+    "reader_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 14 (Reader biographical data)"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/lin-line-layout.json",
+  "title": "LIN: Line Layout",
+  "description": "Line-level composition and line breaks",
+  "type": "object",
+  "required": ["line_id", "page_ref", "line_number", "start_verse_ref", "end_verse_ref"],
+  "properties": {
+    "line_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this line"
+    },
+    "page_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 10 (Page UUID)"
+    },
+    "line_number": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20,
+      "description": "Line number on page (1-15 typically)"
+    },
+    "start_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse UUID)"
+    },
+    "end_verse_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 5 (Verse UUID)"
+    },
+    "start_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 0 (Character UUID - if line starts mid-verse)"
+    },
+    "end_character_ref": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Foreign key to Layer 0 (Character UUID - if line ends mid-verse)"
+    }
+  },
+  "additionalProperties": false
+}

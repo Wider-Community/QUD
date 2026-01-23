@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/rdr-readers-narrators.json",
+  "title": "RDR: Readers and Narrators",
+  "description": "Biographical data for readers and narrators (القراء والرواة)",
+  "type": "object",
+  "required": ["reader_id", "name_ar", "name_en", "canonical_rank"],
+  "properties": {
+    "reader_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this reader"
+    },
+    "name_ar": {
+      "type": "string",
+      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "description": "Arabic name"
+    },
+    "name_en": {
+      "type": "string",
+      "description": "Transliteration"
+    },
+    "birth_year_hijri": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Birth year in Hijri calendar (nullable)"
+    },
+    "death_year_hijri": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Death year in Hijri calendar (nullable)"
+    },
+    "biography": {
+      "type": "string",
+      "description": "Brief biographical information"
+    },
+    "isnad_chain": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Transmission chain to Prophet Muhammad (PBUH)"
+    },
+    "canonical_rank": {
+      "type": "string",
+      "enum": ["ten_canonical", "additional", "narrator"],
+      "description": "One of 10 canonical/additional/narrator"
+    },
+    "geographical_origin": {
+      "type": "string",
+      "description": "Place of origin/school (e.g., 'Kufa', 'Medina', 'Basra')"
+    },
+    "note": {
+      "type": "string",
+      "const": "Layer 14 is MISSING from QS-QIRAAT dataset - requires external scholarly databases",
+      "description": "Implementation note"
+    }
+  },
+  "additionalProperties": false
+}
