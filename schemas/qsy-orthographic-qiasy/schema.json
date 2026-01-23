@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/qsy-orthographic-qiasy.json",
   "title": "QSY: Orthographic Qiasy",
   "description": "Modern standard Arabic orthography (Qiasy/Imla'i script)",
+  "version": "1.0.0",
+  "layer_code": "QSY",
   "type": "object",
   "required": [
     "orthography_id",
@@ -18,7 +20,7 @@
     "verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse UUID)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "qiasy_text": {
       "type": "string",
@@ -38,7 +40,7 @@
     "uthmani_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 12a (source Uthmani orthography)"
+      "description": "Foreign key to UTH (Orthographic Uthmani) - source Uthmani orthography"
     }
   },
   "additionalProperties": false

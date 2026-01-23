@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/wrd-word-structure.json",
   "title": "WRD: Word Structure",
   "description": "Word boundaries and morphological composition",
+  "version": "1.0.0",
+  "layer_code": "WRD",
   "type": "object",
   "required": [
     "word_id",
@@ -19,7 +21,7 @@
     "verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "word_position": {
       "type": "integer",
@@ -31,7 +33,7 @@
       "items": { "type": "integer" },
       "minItems": 2,
       "maxItems": 2,
-      "description": "[start_pos, end_pos] referencing Layer 0 character positions"
+      "description": "[start_pos, end_pos] referencing CHR character positions"
     },
     "character_refs": {
       "type": "array",
@@ -40,7 +42,7 @@
         "format": "uuid"
       },
       "minItems": 1,
-      "description": "UUIDs of Layer 0 characters composing this word"
+      "description": "UUIDs of CHR (Character Composition) entities composing this word"
     },
     "morphology": {
       "type": "object",
@@ -77,7 +79,7 @@
     "sentence_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 4 (Sentence) - optional, if sentence data available"
+      "description": "Foreign key to SNT (Sentence Structure) - optional, if sentence data available"
     }
   },
   "additionalProperties": false

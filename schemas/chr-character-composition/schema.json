@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/chr-character-composition.json",
   "title": "CHR: Character Composition",
   "description": "Base letter sequences with phonetic metadata - the atomic units of Quranic text",
+  "version": "1.0.0",
+  "layer_code": "CHR",
   "type": "object",
   "required": [
     "character_id",
@@ -22,12 +24,12 @@
     "narration_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 7 (Qiraat Structure) - Which narration this character belongs to"
+      "description": "Foreign key to QIR (Qiraat Structure) - Which narration this character belongs to"
     },
     "verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse Structure)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "position": {
       "type": "integer",
@@ -83,7 +85,7 @@
     "word_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 3 (Word) - which word this character belongs to"
+      "description": "Foreign key to WRD (Word Structure) - which word this character belongs to"
     }
   },
   "additionalProperties": false

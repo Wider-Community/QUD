@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/snt-sentence-structure.json",
   "title": "SNT: Sentence Structure",
   "description": "Grammatical composition, waqf (stopping) rules, ibtida (starting) rules",
+  "version": "1.0.0",
+  "layer_code": "SNT",
   "type": "object",
   "required": ["sentence_id", "verse_ref", "word_refs"],
   "properties": {
@@ -14,20 +16,20 @@
     "verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "word_range": {
       "type": "array",
       "items": { "type": "integer" },
       "minItems": 2,
       "maxItems": 2,
-      "description": "[start_word, end_word] referencing Layer 3 word positions"
+      "description": "[start_word, end_word] referencing WRD word positions"
     },
     "word_refs": {
       "type": "array",
       "items": { "type": "string", "format": "uuid" },
       "minItems": 1,
-      "description": "UUIDs of Layer 3 words composing this sentence"
+      "description": "UUIDs of WRD (Word Structure) entities composing this sentence"
     },
     "grammar_type": {
       "type": "string",
@@ -51,7 +53,7 @@
     },
     "note": {
       "type": "string",
-      "const": "Layer 4 is MISSING from QS-QIRAAT dataset - requires external linguistic database",
+      "const": "SNT layer is MISSING from QS-QIRAAT dataset - requires external linguistic database",
       "description": "Implementation note"
     }
   },

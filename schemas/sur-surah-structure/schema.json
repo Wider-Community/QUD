@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/sur-surah-structure.json",
   "title": "SUR: Surah Structure",
   "description": "Chapter metadata and organization",
+  "version": "1.0.0",
+  "layer_code": "SUR",
   "type": "object",
   "required": [
     "surah_id",
@@ -68,7 +70,7 @@
     "mushaf_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 8 (Mushaf)"
+      "description": "Foreign key to MSH (Mushaf Structure)"
     }
   },
   "additionalProperties": false

@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/aya-verse-structure.json",
   "title": "AYA: Verse Structure",
   "description": "Verse enumeration and boundaries - the primary organizational unit of the Quran",
+  "version": "1.0.0",
+  "layer_code": "AYA",
   "type": "object",
   "required": [
     "verse_id",
@@ -19,12 +21,12 @@
     "narration_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 7 (Qiraat Structure)"
+      "description": "Foreign key to QIR (Qiraat Structure)"
     },
     "surah_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 6 (Surah)"
+      "description": "Foreign key to SUR (Surah Structure)"
     },
     "verse_number": {
       "type": "integer",
@@ -41,12 +43,12 @@
     "start_character_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 - first character UUID"
+      "description": "Foreign key to CHR (Character Composition) - first character UUID"
     },
     "end_character_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 - last character UUID"
+      "description": "Foreign key to CHR (Character Composition) - last character UUID"
     },
     "character_count": {
       "type": "integer",

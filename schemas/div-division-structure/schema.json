@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/div-division-structure.json",
   "title": "DIV: Division Structure",
   "description": "Traditional organizational segments (Juz, Hizb, Rub) for recitation scheduling",
+  "version": "1.0.0",
+  "layer_code": "DIV",
   "type": "object",
   "required": ["division_id", "mushaf_ref", "division_type", "division_number", "start_verse_ref"],
   "properties": {
@@ -14,7 +16,7 @@
     "mushaf_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 8 (Mushaf)"
+      "description": "Foreign key to MSH (Mushaf Structure)"
     },
     "division_type": {
       "type": "string",
@@ -29,12 +31,12 @@
     "start_verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse UUID)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "end_verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse UUID - optional if known)"
+      "description": "Foreign key to AYA (Verse Structure) - optional if known"
     },
     "start_character_position": {
       "type": "integer",

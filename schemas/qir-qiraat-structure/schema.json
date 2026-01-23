@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/qir-qiraat-structure.json",
   "title": "QIR: Qiraat Structure",
   "description": "Foundational metadata for Qiraat systems and narrations (القراءات العشر)",
+  "version": "1.0.0",
+  "layer_code": "QIR",
   "type": "object",
   "required": [
     "narration_id",
@@ -76,7 +78,7 @@
     "reader_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 14 (Reader biographical data)"
+      "description": "Foreign key to RDR (Readers & Narrators)"
     }
   },
   "additionalProperties": false

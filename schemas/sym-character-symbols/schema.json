@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/sym-character-symbols.json",
   "title": "SYM: Character Symbols",
   "description": "Diacritical marks, tajweed symbols, and visual rendering rules for each character",
+  "version": "1.0.0",
+  "layer_code": "SYM",
   "type": "object",
   "required": [
     "symbol_id",
@@ -19,7 +21,7 @@
     "character_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 (Character) - The base character this symbol modifies"
+      "description": "Foreign key to CHR (Character Composition) - The base character this symbol modifies"
     },
     "symbol_type": {
       "type": "string",

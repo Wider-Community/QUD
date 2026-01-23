@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/rdr-readers-narrators.json",
   "title": "RDR: Readers and Narrators",
   "description": "Biographical data for readers and narrators (القراء والرواة)",
+  "version": "1.0.0",
+  "layer_code": "RDR",
   "type": "object",
   "required": ["reader_id", "name_ar", "name_en", "canonical_rank"],
   "properties": {
@@ -50,7 +52,7 @@
     },
     "note": {
       "type": "string",
-      "const": "Layer 14 is MISSING from QS-QIRAAT dataset - requires external scholarly databases",
+      "const": "RDR layer is MISSING from QS-QIRAAT dataset - requires external scholarly databases",
       "description": "Implementation note"
     }
   },

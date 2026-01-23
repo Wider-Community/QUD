@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/lin-line-layout.json",
   "title": "LIN: Line Layout",
   "description": "Line-level composition and line breaks",
+  "version": "1.0.0",
+  "layer_code": "LIN",
   "type": "object",
   "required": ["line_id", "page_ref", "line_number", "start_verse_ref", "end_verse_ref"],
   "properties": {
@@ -14,7 +16,7 @@
     "page_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 10 (Page UUID)"
+      "description": "Foreign key to PAG (Page Layout)"
     },
     "line_number": {
       "type": "integer",
@@ -25,22 +27,22 @@
     "start_verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse UUID)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "end_verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse UUID)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "start_character_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 (Character UUID - if line starts mid-verse)"
+      "description": "Foreign key to CHR (Character Composition) - if line starts mid-verse"
     },
     "end_character_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 (Character UUID - if line ends mid-verse)"
+      "description": "Foreign key to CHR (Character Composition) - if line ends mid-verse"
     }
   },
   "additionalProperties": false

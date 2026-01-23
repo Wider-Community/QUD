@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/uth-orthographic-uthmani.json",
   "title": "UTH: Orthographic Uthmani",
   "description": "Uthmani script (Rasm Uthmani) - traditional Quranic orthography",
+  "version": "1.0.0",
+  "layer_code": "UTH",
   "type": "object",
   "required": [
     "orthography_id",
@@ -19,7 +21,7 @@
     "verse_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 5 (Verse UUID)"
+      "description": "Foreign key to AYA (Verse Structure)"
     },
     "uthmanic_text": {
       "type": "string",
@@ -32,7 +34,7 @@
         "type": "string",
         "format": "uuid"
       },
-      "description": "UUIDs of Layer 0 characters composing this text"
+      "description": "UUIDs of CHR (Character Composition) entities composing this text"
     },
     "symbol_refs": {
       "type": "array",
@@ -40,7 +42,7 @@
         "type": "string",
         "format": "uuid"
       },
-      "description": "UUIDs of Layer 1 symbols"
+      "description": "UUIDs of SYM (Character Symbols) entities"
     },
     "script_rules": {
       "type": "object",
@@ -55,7 +57,7 @@
     "qiasy_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 12b (corresponding Qiasy orthography)"
+      "description": "Foreign key to QSY (Orthographic Qiasy) - corresponding Qiasy orthography"
     }
   },
   "additionalProperties": false

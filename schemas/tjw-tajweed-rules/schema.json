@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/tjw-tajweed-rules.json",
   "title": "TJW: Tajweed Rules",
   "description": "Relational metadata between characters (tajweed rules requiring context, idgham relationships, etc.)",
+  "version": "1.0.0",
+  "layer_code": "TJW",
   "type": "object",
   "required": [
     "pair_id",
@@ -20,12 +22,12 @@
     "character_1_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 (Character) - First character in relationship"
+      "description": "Foreign key to CHR (Character Composition) - First character in relationship"
     },
     "character_2_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 0 (Character) - Second character in relationship"
+      "description": "Foreign key to CHR (Character Composition) - Second character in relationship"
     },
     "pair_type": {
       "type": "string",
@@ -58,7 +60,7 @@
     "word_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 3 (Word) - which word contains this character pair"
+      "description": "Foreign key to WRD (Word Structure) - which word contains this character pair"
     }
   },
   "additionalProperties": false

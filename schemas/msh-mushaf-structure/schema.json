@@ -3,6 +3,8 @@
   "$id": "https://qud.itqan.community/schemas/msh-mushaf-structure.json",
   "title": "MSH: Mushaf Structure",
   "description": "Complete manuscript text for each narration",
+  "version": "1.0.0",
+  "layer_code": "MSH",
   "type": "object",
   "required": ["mushaf_id", "narration_ref", "total_verses", "total_characters"],
   "properties": {
@@ -14,16 +16,16 @@
     "narration_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 7 (Qiraat Structure)"
+      "description": "Foreign key to QIR (Qiraat Structure)"
     },
     "edition_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to Layer 13 (Edition Variants - optional)"
+      "description": "Foreign key to EDN (Edition Variants) - optional"
     },
     "composition_rules": {
       "type": "object",
-      "description": "How layers 0-7 are composed for this mushaf",
+      "description": "How content layers (CHR, SYM, WRD, etc.) are composed for this mushaf",
       "properties": {
         "layer_composition": {
           "type": "array",
