@@ -92,7 +92,7 @@ Note: سَلَٰسِلَاْ (76:4) uses U+0652 instead of U+06E0 — potential 
 |------|-----|
 | نُـۨجِي | 21:88 |
 
-### Small Seen (U+06DC) — 3 Small seen, 5 sakt
+### Small Seen (U+06DC) — 3 pronunciation, 5 sakt
 
 | Word | Function | Ref |
 |------|----------|-----|
@@ -146,7 +146,7 @@ Maddah (U+0653, Tajweed category) can co-occur with extensions on the same lette
 
 ### 3. Stop Signs
 
-Each base letter carries **at most one** stop sign. One exception: 36:52 (مَّرۡقَدِنَاۜۗ) carries both Seen Sakt and Qili on the same alef.
+Each base letter carries **at most one** stop sign. One exception: 36:52 (مَّرۡقَدِنَاۜۗ) carries both Seen Sakt and Qili.
 
 **Cardinality rule:** `0..1` stop sign per letter (one exception at 36:52).
 
