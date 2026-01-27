@@ -11,6 +11,7 @@ For each layer, complete the following 4 subtasks in order.
 - Review current `schema.json` for the layer
 - Research Quran datasets (`data/QS - QIRAAT`), QUD slides, demo videos, etc. for relevant data patterns
 - Modify schema based on findings
+- Validate `schema.json` against JSON Schema Draft-07 meta-schema using the `jsonschema` Python library (via `research-tools/validators/schema_validator.py`)
 - Assess layer boundaries:
   - Is this layer too divided? (should merge with another layer)
   - Is this layer too big? (needs splitting into sub-layers)
@@ -23,6 +24,8 @@ For each layer, complete the following 4 subtasks in order.
 - Create `schemas/<layer>/models.py`
 - Implement Pydantic model(s) matching the JSON schema
 - Ensure type hints and validation rules align with schema constraints
+- Generate JSON Schema from the Pydantic model using `.model_json_schema()` and compare against the layer's `schema.json` to ensure consistency
+- Validate sample data against both the JSON schema (using `jsonschema`) and the Pydantic model to confirm alignment
 
 ---
 
