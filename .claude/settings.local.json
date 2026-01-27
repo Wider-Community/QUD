@@ -58,7 +58,9 @@
       "Bash(gh issue view:*)",
       "Bash(for i in 52 53 54 55)",
       "Bash(do echo \"=== Issue #$i ===\")",
-      "Bash(sync)"
+      "Bash(sync)",
+      "Bash(pip install:*)",
+      "Bash(check-jsonschema:*)"
     ],
     "deny": [],
     "ask": []
