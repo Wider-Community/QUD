@@ -10,7 +10,7 @@ Split into two concerns:
 
 from __future__ import annotations
 
-from enum import Enum
+from enum import StrEnum, auto
 from typing import Annotated, Literal, Union
 from uuid import UUID
 
@@ -19,44 +19,44 @@ from pydantic import BaseModel, Field
 
 # ── subcategory enums ────────────────────────────────────────────
 
-class DiacriticSub(str, Enum):
-    haraka = "haraka"
-    tanween_closed = "tanween_closed"
-    tanween_open = "tanween_open"
-    sukun = "sukun"
-    shadda = "shadda"
+class DiacriticSub(StrEnum):
+    HARAKA = auto()
+    TANWEEN_CLOSED = auto()
+    TANWEEN_OPEN = auto()
+    SUKUN = auto()
+    SHADDA = auto()
 
 
-class ExtensionSub(str, Enum):
-    dagger_alef = "dagger_alef"
-    small_waw = "small_waw"
-    small_yaa = "small_yaa"
-    small_high_yaa = "small_high_yaa"
+class ExtensionSub(StrEnum):
+    DAGGER_ALEF = auto()
+    SMALL_WAW = auto()
+    SMALL_YAA = auto()
+    SMALL_HIGH_YAA = auto()
 
 
-class StopSignSub(str, Enum):
-    sili = "sili"
-    qili = "qili"
-    lazim = "lazim"
-    jaiz = "jaiz"
-    either_of = "either_of"
-    seen_sakt = "seen_sakt"
+class StopSignSub(StrEnum):
+    SILI = auto()
+    QILI = auto()
+    LAZIM = auto()
+    JAIZ = auto()
+    EITHER_OF = auto()
+    SEEN_SAKT = auto()
 
 
-class TajweedSub(str, Enum):
-    maddah = "maddah"
-    iqlab_above = "iqlab_above"
-    iqlab_below = "iqlab_below"
-    silent_alef = "silent_alef"
-    silent_vowel = "silent_vowel"
-    imala = "imala"
-    ishmam_tasheel = "ishmam_tasheel"
-    small_noon = "small_noon"
-    small_seen = "small_seen"
+class TajweedSub(StrEnum):
+    MADDAH = auto()
+    IQLAB_ABOVE = auto()
+    IQLAB_BELOW = auto()
+    SILENT_ALEF = auto()
+    SILENT_VOWEL = auto()
+    IMALA = auto()
+    ISHMAM_TASHEEL = auto()
+    SMALL_NOON = auto()
+    SMALL_SEEN = auto()
 
 
-class TatweelSub(str, Enum):
-    tatweel = "tatweel"
+class TatweelSub(StrEnum):
+    TATWEEL = auto()
 
 
 # ── catalog entry models ────────────────────────────────────────
