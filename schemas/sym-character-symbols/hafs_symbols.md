@@ -59,13 +59,15 @@ Functional categorization of all unique symbols in the Uthmanic Hafs v2.0 aya te
 
 ## Symbol Occurrences
 
-### Silent Continuing Alef (U+06E0) — 6 unique words
+### Tajweed
+
+#### Silent Continuing Alef (U+06E0) — 6 unique words
 
 أَنَا۠ ، لَّٰكِنَّا۠ ، ٱلظُّنُونَا۠ ، ٱلرَّسُولَا۠ ، ٱلسَّبِيلَا۠ ، قَوَارِيرَا۠
 
 Note: سَلَٰسِلَاْ (76:4) uses *Silent Vowel* (U+0652) in this dataset instead of *Silent Continuing Alef* (U+06E0) compared to other datasets — potential difference of opinion.
 
-### Silent Vowel (U+0652) — only on alef, waw, yaa
+#### Silent Vowel (U+0652) — only on alef, waw, yaa
 
 | Base letter | Count | Example |
 |-------------|------:|---------|
@@ -73,44 +75,26 @@ Note: سَلَٰسِلَاْ (76:4) uses *Silent Vowel* (U+0652) in this dataset
 | Waw (و) | 255 | أُوْلَٰٓئِكَ |
 | Yaa (ي) | 11 | أَفَإِيْن |
 
-### Imala (U+06EA) — 1 occurrence
+#### Imala (U+06EA) — 1 occurrence
 
 | Word | Ref |
 |------|-----|
 | مَجۡر۪ىٰهَا | 11:41 |
 
-### Ishmam / Tasheel (U+06EC) — 2 occurrences
+#### Ishmam / Tasheel (U+06EC) — 2 occurrences
 
 | Word | Ref |
 |------|-----|
 | تَأۡمَ۬نَّا | 12:11 |
 | ءَا۬عۡجَمِيّٞ | 41:44 |
 
-### Small High Yaa (U+06E7) — 38 occurrences, 7 unique words
-
-All mark a deleted yaa (قاعدة الحذف) in the Uthmani rasm.
-
-| Word | Function | Count | Ref |
-|------|----------|------:|-----|
-| إِبۡرَٰهِـۧمَ / إِبۡرَٰهِـۧمُ | Vowel | 15 | 2:124 |
-| ٱلنَّبِيِّـۧنَ / وَٱلنَّبِيِّـۧنَ / بِٱلنَّبِيِّـۧنَ | Vowel | 13 | 2:61 |
-| ٱلۡأُمِّيِّـۧنَ / وَٱلۡأُمِّيِّـۧنَ | Vowel | 3 | 3:20 |
-| ٱلۡحَوَارِيِّـۧنَ / لِلۡحَوَارِيِّـۧنَ | Vowel | 2 | 5:111 |
-| رَبَّٰنِيِّـۧنَ | Vowel | 1 | 3:79 |
-| يُحۡـِۧيَ / لِّنُحۡـِۧيَ | Consonant | 3 | 46:33 |
-| وَلِـِّۧيَ | Consonant | 1 | 7:196 |
-
-**Vowel (حرف مد)** — 34 occurrences. The deleted yaa is a long vowel /iː/. Appears in إبراهيم (Ibrahim) and sound masculine plurals (النبيين، الأميين، الحواريين، ربانيين).
-
-**Consonant (حرف أصلي)** — 4 occurrences. The deleted yaa is a root letter. يُحيي/لنحيي from root ح-ي-ي (second radical), وليي from root و-ل-ي.
-
-### Small Noon (U+06E8) — 1 occurrence
+#### Small Noon (U+06E8) — 1 occurrence
 
 | Word | Ref |
 |------|-----|
 | نُـۨجِي | 21:88 |
 
-### Small Seen (U+06DC) — 3 pronunciation, 5 sakt
+#### Small Seen (U+06DC) — 3 pronunciation, 5 sakt
 
 | Word | Function | Ref |
 |------|----------|-----|
@@ -124,6 +108,59 @@ All mark a deleted yaa (قاعدة الحذف) in the Uthmani rasm.
 | بَلۡۜ | Sakt | 83:14 |
 
 Note: 52:37 (ٱلۡمُصَۜيۡطِرُونَ) uses seen above rather than below — potential encoding error or difference of opinion.
+
+### Extensions
+
+#### Dagger Alef (U+0670) — 9,726 occurrences
+
+Marks a long /aː/ where alef is not fully written in the Uthmani rasm. Appears on 31 different base letters.
+
+| Function | Count | Examples |
+|----------|------:|----------|
+| قاعدة الحذف after consonant | 6,349 | ذَٰلِكَ, ٱلرَّحۡمَٰنِ |
+| قاعدة الابدال after silent و | 750 | ٱلصَّلَوٰةَ, ٱلۡحَيَوٰةِ |
+| After ي as vocative يا | 385 | يَٰٓأَيُّهَا, يَٰقَوۡمِ |
+| Final after ى | 1,904 | عَلَىٰ, إِلَىٰ |
+| Medial after ى | 338 | أَدۡرَىٰكَ, ٱلتَّوۡرَىٰةَ |
+| After ء (via tatweel or direct) | 17 | ٱلۡـَٰٔنَ, خَطِيٓـَٰٔتِهِمۡ, سَوۡءَٰتِهِمَا, قُرۡءَٰنًا, بُرَءَٰٓؤُاْ |
+| After أ | 1 | ءَأَٰلِهَتُنَا |
+| Silent (not pronounced) | 1 | فَٱدَّٰرَٰءۡتُمۡ (2:72) — second dagger alef after ر is silent |
+
+#### Small Waw (U+06E5) — 1,256 occurrences
+
+| Function | Count | Examples |
+|----------|------:|----------|
+| مد الصلة — after word-final haa with damma | 1,228 | لَهُۥ, إِنَّهُۥ |
+| Deleted waw (قاعدة الحذف) | 27 | دَاوُۥدَ, يَسۡتَوُۥنَ |
+| Deleted waw — on hamza | 1 | ٱلۡمَوۡءُۥدَةُ |
+
+#### Small Yaa (U+06E6) — 957 occurrences
+
+| Function | Count | Examples |
+|----------|------:|----------|
+| مد الصلة — after word-final haa with kasra | 935 | بِهِۦ, ءَايَٰتِهِۦ |
+| Deleted yaa (قاعدة الحذف) | 20 | يُحۡيِۦ, يَسۡتَحۡيِۦٓ |
+| Special (27:36:8) | 1 | ءَاتَىٰنِۦَ |
+| Special (106:2:1) | 1 | إِۦلَٰفِهِمۡ |
+
+
+#### Small High Yaa (U+06E7) — 38 occurrences
+
+All mark a deleted yaa (قاعدة الحذف) in the Uthmani rasm.
+
+| Word | Function | Count | Ref |
+|------|----------|------:|-----|
+| إِبۡرَٰهِـۧمَ / إِبۡرَٰهِـۧمُ | Vowel | 15 | 2:124 |
+| ٱلنَّبِيِّـۧنَ / وَٱلنَّبِيِّـۧنَ / بِٱلنَّبِيِّـۧنَ | Vowel | 13 | 2:61 |
+| ٱلۡأُمِّيِّـۧنَ / وَٱلۡأُمِّيِّـۧنَ | Vowel | 3 | 3:20 |
+| ٱلۡحَوَارِيِّـۧنَ / لِلۡحَوَارِيِّـۧنَ | Vowel | 2 | 5:111 |
+| رَبَّٰنِيِّـۧنَ | Vowel | 1 | 3:79 |
+| يُحۡـِۧيَ / لِّنُحۡـِۧيَ | Consonant | 3 | 46:33 |
+| وَلِـِّۧيَ | Consonant | 1 | 7:196 |
+
+**Vowel (حرف مد)** — Appears in إبراهيم and sound masculine plurals (النبيين، الأميين، الحواريين، ربانيين).
+
+**Consonant (حرف أصلي)** — The deleted yaa is a root letter. يُحيي/لنحيي from root ح-ي-ي ,وليي from root و-ل-ي.
 
 ---
 
