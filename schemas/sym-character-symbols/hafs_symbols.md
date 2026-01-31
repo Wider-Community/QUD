@@ -6,48 +6,48 @@ Functional categorization of all unique symbols in the Uthmanic Hafs v2.0 aya te
 
 ---
 
-| Category | Subcategory | Symbol | Unicode | Name | Count | Example (Ref) |
-|----------|-------------|--------|---------|------|------:|---------------|
+| Category | Subcategory | Symbol | Unicode | Name | Count | Example |
+|----------|-------------|--------|---------|------|------:|---------|
 | **1. Diacritics** | | | | | | |
-| | Haraka | َ | `U+064E` | Fatha | 122,777 | ٱللَّهِ (1:1) |
-| | Haraka | ُ | `U+064F` | Damma | 37,454 | ٱلۡحَمۡدُ (1:2) |
-| | Haraka | ِ | `U+0650` | Kasra | 46,069 | بِسۡمِ (1:1) |
-| | Tanween (closed) | ً | `U+064B` | Fathatan | 734 | رَغَدًا (2:35) |
-| | Tanween (closed) | ٌ | `U+064C` | Dammatan | 578 | سَوَآءٌ (2:6) |
-| | Tanween (closed) | ٍ | `U+064D` | Kasratan | 599 | شَيۡءٍ (2:29) |
-| | Tanween (open) | ٗ | `U+0657` | Inverted Damma | 2,901 | هُدٗى (2:2) |
-| | Tanween (open) | ٖ | `U+0656` | Subscript Alef | 1,935 | ظُلُمَٰتٖ (2:17) |
-| | Tanween (open) | ٞ | `U+065E` | Fatha with Two Dots | 1,807 | غِشَٰوَةٞۖ (2:7) |
-| | Sukun | ۡ | `U+06E1` | Small High Dotless Head of Khah | 37,148 | بِسۡمِ (1:1) |
-| | Shadda | ّ | `U+0651` | Shadda | 22,678 | ٱللَّهِ (1:1) |
+| | Haraka | َ | `U+064E` | Fatha | 122,777 | ٱللَّهِ |
+| | Haraka | ُ | `U+064F` | Damma | 37,454 | ٱلۡحَمۡدُ |
+| | Haraka | ِ | `U+0650` | Kasra | 46,069 | بِسۡمِ |
+| | Tanween (closed) | ً | `U+064B` | Fathatan | 734 | رَغَدًا |
+| | Tanween (closed) | ٌ | `U+064C` | Dammatan | 578 | سَوَآءٌ |
+| | Tanween (closed) | ٍ | `U+064D` | Kasratan | 599 | شَيۡءٍ |
+| | Tanween (open) | ٗ | `U+0657` | Inverted Damma | 2,901 | هُدٗى |
+| | Tanween (open) | ٖ | `U+0656` | Subscript Alef | 1,935 | ظُلُمَٰتٖ |
+| | Tanween (open) | ٞ | `U+065E` | Fatha with Two Dots | 1,807 | غِشَٰوَةٞۖ |
+| | Sukun | ۡ | `U+06E1` | Small High Dotless Head of Khah | 37,148 | بِسۡمِ |
+| | Shadda | ّ | `U+0651` | Shadda | 22,678 | ٱللَّهِ |
 | | | | | | | |
 | **2. Extensions** | | | | | | |
-| | Dagger Alef | ٰ | `U+0670` | Superscript Alef | 9,726 | ٱلرَّحۡمَٰنِ (1:1) |
-| | Small Waw | ۥ | `U+06E5` | Small Waw | 1,256 | حَوۡلَهُۥ (2:17) |
-| | Small Yaa | ۦ | `U+06E6` | Small Yeh | 957 | بِهِۦ (2:22) |
-| | Small High Yaa | ۧ | `U+06E7` | Small High Yeh | 38 | ٱلنَّبِيِّـۧنَ (2:61) |
+| | Dagger Alef | ٰ | `U+0670` | Superscript Alef | 9,726 | ٱلرَّحۡمَٰنِ |
+| | Small Waw | ۥ | `U+06E5` | Small Waw | 1,256 | حَوۡلَهُۥ |
+| | Small Yaa | ۦ | `U+06E6` | Small Yeh | 957 | بِهِۦ |
+| | Small High Yaa | ۧ | `U+06E7` | Small High Yeh | 38 | ٱلنَّبِيِّـۧنَ |
 | | | | | | | |
 | **3. Stop Signs** | | | | | | |
-| | Sili | ۖ | `U+06D6` | Small High Sad-Lam-Ya | 1,651 | رَّبِّهِمۡۖ (2:5) |
-| | Qili | ۗ | `U+06D7` | Small High Qaf-Lam-Ya | 511 | ٱلسُّفَهَآءُۗ (2:13) |
-| | Lazim | ۘ | `U+06D8` | Small High Meem Initial | 21 | مَثَلٗاۘ (2:26) |
-| | Jaiz | ۚ | `U+06DA` | Small High Jeem | 2,083 | ٱلۡمَوۡتِۚ (2:19) |
-| | Either-of | ۛ | `U+06DB` | Small High Three Dots | 6 | رَيۡبَۛ (2:2) |
-| | Seen Sakt | ۜ | `U+06DC` | Small High Seen | 5 | عِوَجَاۜ (18:1) |
+| | Sili | ۖ | `U+06D6` | Small High Sad-Lam-Ya | 1,651 | رَّبِّهِمۡۖ |
+| | Qili | ۗ | `U+06D7` | Small High Qaf-Lam-Ya | 511 | ٱلسُّفَهَآءُۗ |
+| | Lazim | ۘ | `U+06D8` | Small High Meem Initial | 21 | مَثَلٗاۘ |
+| | Jaiz | ۚ | `U+06DA` | Small High Jeem | 2,083 | ٱلۡمَوۡتِۚ |
+| | Either-of | ۛ | `U+06DB` | Small High Three Dots | 6 | رَيۡبَۛ |
+| | Seen Sakt | ۜ | `U+06DC` | Small High Seen | 5 | عِوَجَاۜ |
 | | | | | | | |
 | **4. Tajweed** | | | | | | |
-| | Maddah | ٓ | `U+0653` | Maddah Above | 5,652 | ٱلضَّآلِّينَ (1:7) |
-| | Iqlab Mark (above) | ۢ | `U+06E2` | Small High Meem Isolated | 510 | أَلِيمُۢ (2:10) |
-| | Iqlab Mark (below) | ۭ | `U+06ED` | Small Low Meem | 99 | كَافِرِۭ (2:41) |
-| | Silent Continuing Alef | ۠ | `U+06E0` | Small High Upright Rectangular Zero | 66 | أَنَا۠ (2:258) |
-| | Silent Vowel | ْ | `U+0652` | Sukun | 3,988 | أُوْلَٰٓئِكَ (2:5) |
-| | Imala | ۪ | `U+06EA` | Empty Centre Low Stop | 1 | مَجۡر۪ىٰهَا (11:41) |
-| | Ishmam / Tasheel | ۬ | `U+06EC` | Rounded High Stop with Filled Centre | 2 | تَأۡمَ۬نَّا (12:11) |
-| | Small Noon | ۨ | `U+06E8` | Small High Noon | 1 | نُـۨجِي (21:88) |
-| | Small Seen | ۜ | `U+06DC` | Small High Seen | 3 | وَيَبۡصُۜطُ (2:245) |
+| | Maddah | ٓ | `U+0653` | Maddah Above | 5,652 | ٱلضَّآلِّينَ |
+| | Iqlab Mark (above) | ۢ | `U+06E2` | Small High Meem Isolated | 510 | أَلِيمُۢ |
+| | Iqlab Mark (below) | ۭ | `U+06ED` | Small Low Meem | 99 | كَافِرِۭ |
+| | Silent Continuing Alef | ۠ | `U+06E0` | Small High Upright Rectangular Zero | 66 | أَنَا۠ |
+| | Silent Vowel | ْ | `U+0652` | Sukun | 3,988 | أُوْلَٰٓئِكَ |
+| | Imala | ۪ | `U+06EA` | Empty Centre Low Stop | 1 | مَجۡر۪ىٰهَا |
+| | Ishmam / Tasheel | ۬ | `U+06EC` | Rounded High Stop with Filled Centre | 2 | تَأۡمَ۬نَّا |
+| | Small Noon | ۨ | `U+06E8` | Small High Noon | 1 | نُـۨجِي |
+| | Small Seen | ۜ | `U+06DC` | Small High Seen | 3 | وَيَبۡصُۜطُ |
 | | | | | | | |
 | **5. Tatweel** | | | | | | |
-| | | ـ | `U+0640` | Tatweel (Kashida) | 535 | أَنۢبِـُٔونِي (2:31) |
+| | | ـ | `U+0640` | Tatweel (Kashida) | 535 | أَنۢبِـُٔونِي |
 | | | | | | | |
 | **6. Non-Letter Related** | | | | | | |
 | | Rub Hizb | ۞ | `U+06DE` | Start of Rub El Hizb | 199 | |
@@ -107,38 +107,36 @@ Note: سَلَٰسِلَاْ (76:4) uses *Silent Vowel* (U+0652) in this dataset
 | مَنۡۜ | Sakt | 75:27 |
 | بَلۡۜ | Sakt | 83:14 |
 
-Note: 52:37 (ٱلۡمُصَۜيۡطِرُونَ) uses seen above rather than below — potential encoding error or difference of opinion.
+Note: 52:37 uses Small High Seen (U+06DC) above the ص in this dataset (ٱلۡمُصَۜيۡطِرُونَ), whereas other datasets place a small seen below the ص. The small seen below variant (U+06E3) is not present in this dataset.
 
 ### Extensions
 
 #### Dagger Alef (U+0670) — 9,726 occurrences
 
-Marks a long /aː/ where alef is not fully written in the Uthmani rasm. Appears on 31 different base letters.
-
 | Function | Count | Examples |
 |----------|------:|----------|
-| قاعدة الحذف after consonant | 6,349 | ذَٰلِكَ, ٱلرَّحۡمَٰنِ |
-| قاعدة الابدال after silent و | 750 | ٱلصَّلَوٰةَ, ٱلۡحَيَوٰةِ |
-| After ي as vocative يا | 385 | يَٰٓأَيُّهَا, يَٰقَوۡمِ |
-| Final after ى | 1,904 | عَلَىٰ, إِلَىٰ |
-| Medial after ى | 338 | أَدۡرَىٰكَ, ٱلتَّوۡرَىٰةَ |
-| After ء (via tatweel or direct) | 17 | ٱلۡـَٰٔنَ, خَطِيٓـَٰٔتِهِمۡ, سَوۡءَٰتِهِمَا, قُرۡءَٰنًا, بُرَءَٰٓؤُاْ |
-| After أ | 1 | ءَأَٰلِهَتُنَا |
-| Silent (not pronounced) | 1 | فَٱدَّٰرَٰءۡتُمۡ (2:72) — second dagger alef after ر is silent |
+| Deleted alef after consonant (قاعدة الحذف) | 6,355 | ذَٰلِكَ, ٱلرَّحۡمَٰنِ, دِيَٰرِهِمۡ |
+| Substituted alef after silent waw (قاعدة الابدال) | 750 | ٱلصَّلَوٰةَ, ٱلۡحَيَوٰةِ |
+| After yaa as vocative (يا) | 360 | يَٰٓأَيُّهَا, يَٰقَوۡمِ |
+| Final after alef maqsura (ى) | 1,904 | عَلَىٰ, إِلَىٰ |
+| Medial after alef maqsura (ى) | 338 | أَدۡرَىٰكَ, ٱلتَّوۡرَىٰةَ |
+| After hamza (ء) — via tatweel or direct | 17 | ٱلۡـَٰٔنَ, خَطِيٓـَٰٔتِهِمۡ, سَوۡءَٰتِهِمَا, قُرۡءَٰنًا, بُرَءَٰٓؤُاْ |
+| After alef hamza (أ) | 1 | ءَأَٰلِهَتُنَا |
+| Silent — not pronounced | 1 | فَٱدَّٰرَٰءۡتُمۡ (2:72) — second dagger alef after ر is silent |
 
 #### Small Waw (U+06E5) — 1,256 occurrences
 
 | Function | Count | Examples |
 |----------|------:|----------|
-| مد الصلة — after word-final haa with damma | 1,228 | لَهُۥ, إِنَّهُۥ |
+| Silah after word-final haa with damma (مد الصلة) | 1,228 | لَهُۥ, إِنَّهُۥ |
 | Deleted waw (قاعدة الحذف) | 27 | دَاوُۥدَ, يَسۡتَوُۥنَ |
-| Deleted waw — on hamza | 1 | ٱلۡمَوۡءُۥدَةُ |
+| Special (81:8:2) | 1 | ٱلۡمَوۡءُۥدَةُ |
 
 #### Small Yaa (U+06E6) — 957 occurrences
 
 | Function | Count | Examples |
 |----------|------:|----------|
-| مد الصلة — after word-final haa with kasra | 935 | بِهِۦ, ءَايَٰتِهِۦ |
+| Silah after word-final haa with kasra (مد الصلة) | 935 | بِهِۦ, ءَايَٰتِهِۦ |
 | Deleted yaa (قاعدة الحذف) | 20 | يُحۡيِۦ, يَسۡتَحۡيِۦٓ |
 | Special (27:36:8) | 1 | ءَاتَىٰنِۦَ |
 | Special (106:2:1) | 1 | إِۦلَٰفِهِمۡ |
@@ -146,7 +144,7 @@ Marks a long /aː/ where alef is not fully written in the Uthmani rasm. Appears 
 
 #### Small High Yaa (U+06E7) — 38 occurrences
 
-All mark a deleted yaa (قاعدة الحذف) in the Uthmani rasm.
+All mark a deleted yaa (قاعدة الحذف).
 
 | Word | Function | Count | Ref |
 |------|----------|------:|-----|
@@ -158,9 +156,9 @@ All mark a deleted yaa (قاعدة الحذف) in the Uthmani rasm.
 | يُحۡـِۧيَ / لِّنُحۡـِۧيَ | Consonant | 3 | 46:33 |
 | وَلِـِّۧيَ | Consonant | 1 | 7:196 |
 
-**Vowel (حرف مد)** — Appears in إبراهيم and sound masculine plurals (النبيين، الأميين، الحواريين، ربانيين).
+**Vowel** (حرف مد) — Appears in إبراهيم and sound masculine plurals (النبيين، الأميين، الحواريين، ربانيين).
 
-**Consonant (حرف أصلي)** — The deleted yaa is a root letter. يُحيي/لنحيي from root ح-ي-ي ,وليي from root و-ل-ي.
+**Consonant** (حرف أصلي) — The deleted yaa is a root letter: يُحيي / لنحيي from root ح-ي-ي, and وليي from root و-ل-ي.
 
 ---
 
