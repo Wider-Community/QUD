@@ -108,9 +108,9 @@ Early prototype demos:
 ## External Resources
 
 - [Tarteel Quranic Universal Library](https://qul.tarteel.ai/resources)
-- [QUL Tarteel NLP Resources Catalog](QUL_Tarteel_NLP_Resources_Catalog.md)
+- [QUL Tarteel NLP Resources Catalog](docs/QUL_Tarteel_NLP_Resources_Catalog.md)
 - [Uloom Quran](https://github.com/h9-tec/uloom-quran): A comprehensive AI-powered platform for Quranic Sciences featuring semantic search, comparative tafsir analysis, and the ten Quranic readings
-- [زيــد: النظام المرجعي المتكامل لإدارة محتوى علم القراءات وعلوم القرآن](https://community.itqan.dev/d/221
+- [زيــد: النظام المرجعي المتكامل لإدارة محتوى علم القراءات وعلوم القرآن](https://community.itqan.dev/d/221)
 
 
 
