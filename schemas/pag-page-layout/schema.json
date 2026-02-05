@@ -1,54 +1,148 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://qud.itqan.community/schemas/pag-page-layout.json",
-  "title": "PAG: Page Layout",
-  "description": "Page-level composition and pagination",
-  "version": "1.0.0",
-  "layer_code": "PAG",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/quran-page.schema.json",
+  "title": "Quran Page-Level Schema",
+  "description": "Page-level structural schema for Mushaf pagination. Pages MUST be ordered by pageNumber when persisted or exchanged.",
   "type": "object",
-  "required": ["page_id", "mushaf_ref", "page_number", "start_verse_ref", "end_verse_ref"],
+  "required": ["metadata", "pages"],
+  "additionalProperties": false,
+
   "properties": {
-    "page_id": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Unique identifier for this page"
+    "metadata": {
+      "type": "object",
+      "required": ["edition", "mushaf", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "edition": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_\\-]+$",
+          "description": "Quran textual edition identifier (e.g. hafs-uthmani). Alphanum, underscore, hyphen allowed."
+        },
+        "mushaf": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Za-z0-9_\\-]+$",
+          "description": "Physical mushaf layout identifier (e.g. Madani-15-line)."
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+          "description": "Semantic dataset/schema version (semver style: MAJOR.MINOR.PATCH)."
+        }
+      }
     },
-    "mushaf_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to MSH (Mushaf Structure)"
-    },
-    "page_number": {
-      "type": "integer",
-      "minimum": 1,
-      "description": "Page number in mushaf"
-    },
-    "start_verse_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to AYA (Verse Structure)"
-    },
-    "end_verse_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to AYA (Verse Structure)"
-    },
-    "start_character_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to CHR (Character Composition) - if page starts mid-verse"
-    },
-    "end_character_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to CHR (Character Composition) - if page ends mid-verse"
-    },
-    "line_count": {
-      "type": "integer",
-      "minimum": 1,
-      "default": 15,
-      "description": "Lines per page (typically 15)"
+
+    "pages": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Ordered array of pages. Consumers SHOULD preserve order by `pageNumber`.",
+      "items": { "$ref": "#/$defs/page" }
     }
   },
-  "additionalProperties": false
+
+  "$defs": {
+    "intRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "integer", "minimum": 1 },
+        "end": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "ayahRef": {
+      "type": "object",
+      "required": ["surah", "ayah"],
+      "additionalProperties": false,
+      "properties": {
+        "surah": { "type": "integer", "minimum": 1, "maximum": 114 },
+        "ayah": { "type": "integer", "minimum": 1 }
+      }
+    },
+
+    "page": {
+      "type": "object",
+      "required": [
+        "pageNumber",
+        "juz",
+        "hizb",
+        "rub",
+        "ayahStart",
+        "ayahEnd",
+        "ayahCount",
+        "lineCount",
+        "wordCount"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pageNumber": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 604,
+          "description": "Mushaf page number (1–604). Acts as primary identity for this layer."
+        },
+
+        "juz": {
+          "description": "Either a single juz integer or a {start,end} range when a page crosses juz boundaries.",
+          "anyOf": [
+            { "type": "integer", "minimum": 1, "maximum": 30 },
+            { "$ref": "#/$defs/intRange" }
+          ]
+        },
+
+        "hizb": {
+          "description": "Either a single hizb integer or a {start,end} range when crossing boundaries.",
+          "anyOf": [
+            { "type": "integer", "minimum": 1, "maximum": 60 },
+            { "$ref": "#/$defs/intRange" }
+          ]
+        },
+
+        "rub": {
+          "description": "Either a single rub integer or a {start,end} range when crossing boundaries.",
+          "anyOf": [
+            { "type": "integer", "minimum": 1, "maximum": 240 },
+            { "$ref": "#/$defs/intRange" }
+          ]
+        },
+
+        "ayahStart": {
+          "$ref": "#/$defs/ayahRef",
+          "format": "uuid",
+          "description": "First ayah (surah+ayah) that appears on this page. If the page starts mid-ayah, this still points to that ayah."
+        },
+
+        "ayahEnd": {
+          "$ref": "#/$defs/ayahRef",
+          "format": "uuid",
+          "description": "Last ayah (surah+ayah) that appears on this page. If the page ends mid-ayah, this still points to that ayah."
+        },
+
+        "ayahCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Total number of ayahs appearing on this page (partial ayahs count toward this total)."
+        },
+
+        "lineCount": {
+          "type": "integer",
+          "minimum": 1,
+          "default": 15,
+          "description": "Number of text lines on the page (default 15 for Madani 15-line mushaf)."
+        },
+
+        "wordCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of words rendered on the page. Use 0 if not computed."
+        }
+      }
+    }
+  }
 }

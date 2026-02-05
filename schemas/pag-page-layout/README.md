@@ -1,171 +1,77 @@
-# PAG Page Layout Generator (Hafs – KFGQPC v2)
+# Quran Page-Level Schema (`quran-page.schema.json`)
 
-**Project**: QUD – Quranic Data Layer  
-**Layer**: PAG (Page Layout)  
-**Narration**: Hafs  
-**Edition**: KFGQPC v2  
+This schema defines the **page-level structure of a Mushaf (Quran copy)** for digital storage, exchange, and validation. It allows representing the mapping of Quranic pages to ayahs, lines, words, and classical divisions like **juz**, **hizb**, and **rub**.  
 
----
-
-## Overview
-
-This script generates **PAG (Page Layout)** entities for the **Hafs narration** using the **KFGQPC v2** dataset.  
-Each PAG entity represents a single Mushaf page and defines its structural boundaries in terms of verses and characters.
-
-The output is a schema-compliant JSON file designed for direct integration into the QUD PAG layer.
+It is designed to support structured data processing, pagination, indexing, and reference in Quranic applications.
 
 ---
 
-## Data Source
+## Schema Overview
 
-The script reads from the following CSV file:
-```hafsData_v2-0.csv```
-
----
-
-## Output
-
-The generated data is written to:
-```pag-page-layout.json```
-
-
-All output is UTF-8 encoded and formatted for readability.
+- **Schema Version:** Draft 2020-12
+- **$id:** `https://example.org/schemas/quran-page.schema.json`
+- **Title:** Quran Page-Level Schema
+- **Description:** Defines the structure of a Mushaf page, including metadata and page content references.
+- **Top-Level Type:** `object`  
+- **Required Top-Level Fields:** `metadata`, `pages`  
+- **Additional Properties:** Not allowed (strict schema)
 
 ---
 
-## UUID Generation
+## Top-Level Properties
 
-All identifiers are generated deterministically using UUID v5 functions from:
+### 1. `metadata` (object)
 
-```research-tools/generators/uuid_generator.py```
+Contains information about the edition, physical Mushaf layout, and versioning.
 
+| Field | Type | Required | Description | Why Used |
+|-------|------|----------|-------------|----------|
+| `edition` | string | ✅ | Quran textual edition identifier (e.g., `hafs-uthmani`). | Identifies which textual version the page data belongs to. |
+| `mushaf` | string | ✅ | Physical layout identifier (e.g., `Madani-15-line`). | Tracks the printed Mushaf layout; affects page breaks and line counts. |
+| `version` | string | ✅ | Semantic version of the dataset/schema (e.g., `1.0.0`). | Tracks dataset updates and ensures application compatibility. |
 
-The following generators are used:
-
-- `page_id` – Page-level identifier  
-- `verse_id` – Start and end verse references  
-- `char_id` – Character-level boundary references
-- `mushaf_id` - Reference to the Mushaf structure (MSH layer)
-
-This ensures stable IDs across runs and consistent cross-layer references.
-
----
-
-## Page Grouping Logic
-
-Rows are grouped by the `page` column in the CSV file.
-
-For each page group:
-
-- The **first row** determines the start surah and ayah
-- The **last row** determines the end surah and ayah
-- Empty page groups are skipped
-
-Each group produces exactly **one PAG entity**.
+**Constraints:**  
+- Strings must be 1–100 characters (edition/mushaf) or 1–32 (version).  
+- Allowed characters for edition/mushaf: alphanumeric, underscore `_`, hyphen `-`.  
+- Version follows `MAJOR.MINOR.PATCH` semver pattern.
 
 ---
 
-## Page Number Validation
+### 2. `pages` (array)
 
-Page numbers are validated before processing.
+An ordered array of **page objects** representing each page in the Mushaf.
 
-A page number is considered valid if:
+- **Type:** `array` of `page` objects  
+- **Minimum Items:** 1  
+- **Order:** Consumers should preserve order by `pageNumber`.  
 
-- It is an integer
-- It is greater than or equal to 1
-
-Invalid page numbers are skipped to prevent invalid PAG entries.
-
----
-
-## Surah and Ayah Validation
-
-Surah and ayah values are parsed using safe integer conversion.
-
-- Values that cannot be converted to integers are rejected
-- Any page group with invalid start or end surah/ayah values is skipped
-
-This guarantees that all generated UUIDs reference valid Quranic positions.
+Each `page` object provides detailed structural information about that page.
 
 ---
 
-## Arabic Character Counting
+## Page Object (`$defs/page`)
 
-Character boundaries are determined by counting **Arabic letters only**.
+### Required Fields
 
-The counting logic:
-
-- Matches Arabic letters in Unicode range U+0621–U+064A
-- Excludes:
-  - Spaces
-  - Punctuation
-  - Quranic symbols
-  - Tashkeel (diacritics)
-
-If the input text is not a string, the count safely returns zero.
-
----
-
-## Safe Character Index Enforcement
-
-The PAG schema requires **positive character indices**.
-
-To ensure schema compliance:
-
-- Character counts are clamped to a minimum value of `1`
-- This guarantees that `end_character_ref` is always valid
-
-Character references always start at:
-- Word index: `1`
-- Character index: `1`
+| Field | Type | Description | Why Used |
+|-------|------|-------------|----------|
+| `pageNumber` | integer (1–604) | Mushaf page number | Primary identifier of the page, ensures order and pagination. |
+| `juz` | integer (1–30) or `{start,end}` | The Juz the page belongs to | Captures Quranic divisions. Ranges handle pages spanning multiple Juz. |
+| `hizb` | integer (1–60) or `{start,end}` | The Hizb the page belongs to | Helps with recitation tracking and indexing. |
+| `rub` | integer (1–240) or `{start,end}` | The Rub the page belongs to | Tracks finer divisions within a Hizb for precise references. |
+| `ayahStart` | object `{surah, ayah}` | First ayah on the page | Enables bookmarking, search, and cross-layer linking. |
+| `ayahEnd` | object `{surah, ayah}` | Last ayah on the page | Marks the end of the page content; supports navigation and verse ranges. |
+| `ayahCount` | integer | Total ayahs on the page | Quick reference for content statistics and validation. |
+| `lineCount` | integer (default 15) | Number of text lines on the page | Useful for rendering, layout calculations, and validation. |
+| `wordCount` | integer | Total words on the page | Optional metric for text analysis or layout purposes. |
 
 ---
 
-## Character Text Source
+### Nested Definitions
 
-Arabic character counting uses the following dataset column:
+#### 1. `intRange` (object)
 
-```aya_text_emlaey```
+Represents a **range of integers** for divisions like Juz, Hizb, or Rub:
 
-
-This ensures consistency with the Emlaey orthographic representation used in the Hafs dataset.
-
----
-
-## PAG Entity Structure
-
-Each generated PAG object includes:
-
-- `page_id` – Deterministic UUID for the page
-- `mushaf_ref` – Reference to the Mushaf entity
-- `page_number` – Page number from the dataset
-- `start_verse_ref` – UUID of the first verse on the page
-- `end_verse_ref` – UUID of the last verse on the page
-- `start_character_ref` – Start character boundary
-- `end_character_ref` – End character boundary
-- `line_count` – Fixed value of `15`
-
-All fields conform to the PAG JSON Schema.
-
----
-
-## Error Handling Strategy
-
-- Invalid rows are skipped silently
-- Processing continues even if individual pages fail validation
-- No partial or malformed PAG entities are written
-
-This design prioritizes **data integrity over completeness**.
-
----
-
-## Notes
-
-- Page numbers are assumed to be clean integers in the Hafs dataset
-- No page range normalization is required for this version
-- UUID generation is fully deterministic and reproducible
-- Character-level precision is preserved without relying on word segmentation
-
----
-
-**Last Updated**: 2026-02-02
+```json
+{ "start": 5, "end": 6 }
