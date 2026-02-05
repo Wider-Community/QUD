@@ -73,51 +73,32 @@ The catalog uses `oneOf` with a `category` discriminator per the project's schem
 
 ## UUID Assessment
 
-**Current convention:** `{narration}:s{surah}:v{verse}:w{word}:c{char}:sym{symbol}`
+**Convention:** `{narration}:{edition}:s{surah}:v{verse}:w{word}:c{char}:sym.{slot}`
 
 | Check | Status | Notes |
 |-------|--------|-------|
-| Uniqueness | Pass | Full character path + `sym{n}` suffix prevents collisions |
-| Determinism | **Needs ordering convention** | See below |
-| Edition ambiguity | **Needs edition in name string** | See below |
+| Uniqueness | Pass | Full character path + `sym.{slot}` suffix prevents collisions |
+| Determinism | Pass | Category names are deterministic — no ordering needed |
+| Edition context | Pass | Edition segment handles edition-level symbol variation |
 | Dependencies | Pass | Chain `symbol → char → word → verse → surah` is sound |
 | Cross-narration | Pass | Narration is the first segment |
 
-### Ordering convention needed
+### Category-based slots
 
-The `sym{n}` index requires a stable ordering of symbols on a character. A character carrying symbols from multiple categories (e.g., Fatha + Maddah) needs a defined rule for which is `sym1`, `sym2`. Without this, two implementations could assign different indices to the same symbols.
+Since each category has cardinality 0..1 per character, we use category names directly as slots instead of numeric indices. This eliminates the need for an ordering convention — the slot name is inherently deterministic.
 
-Proposed fixed priority:
+| Slot | Category | Cardinality |
+|------|----------|-------------|
+| `sym.diacritic` | diacritic (haraka, tanween, sukun) | 0..1 |
+| `sym.shadda` | diacritic (shadda only) | 0..1 |
+| `sym.extension` | extension | 0..1 |
+| `sym.tajweed` | tajweed | 0..1 |
+| `sym.tatweel` | tatweel | 0..1 |
 
-| Priority | Category |
-|----------|----------|
-| 1 | diacritic |
-| 2 | extension |
-| 3 | tajweed |
-| 4 | tatweel |
 
-Within the same category (rare — cardinality is 0..1 per category), sort by codepoint ascending.
+### Edition context in UUID
 
-**Example:**
-
-| Index | Symbol | Category | Priority | UUID name string |
-|-------|--------|----------|----------|------------------|
-| sym1 | Fatha | diacritic | 1 | `hafs:s2:v255:w4:c1:sym1` |
-| sym2 | Maddah | tajweed | 3 | `hafs:s2:v255:w4:c1:sym2` |
-
-### Edition context missing from UUID
-
-Symbols vary not just by narration but by mushaf type and edition. Tajweed notation and even some diacritics differ across editions (e.g., King Fahd Complex vs Cairo edition). The current name string uses only narration, meaning two editions of Hafs would produce the same UUID for different symbol sets — a collision.
-
-**Proposed fix:**
-
-```
-# Current (ambiguous)
-{narration}:s{surah}:v{verse}:w{word}:c{char}:sym{symbol}
-
-# Proposed
-{narration}:{edition}:s{surah}:v{verse}:w{word}:c{char}:sym{symbol}
-```
+Symbols vary not just by narration but by mushaf type and edition. Tajweed notation and even some diacritics differ across editions (e.g., King Fahd Complex vs Cairo edition). The edition segment in the UUID prevents collisions between different editions of the same narration.
 
 This change is scoped to SYM only. Base letters and word boundaries are likely narration-level (to be determined in those layers' research), but symbol annotation is edition-dependent. The `character_ref` FK still points to a narration-level CHR entity.
 
