@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.org/schemas/quran-page.schema.json",
+  "$id": "https://example.org/schemas/pag-page-layout/schema.json",
   "title": "Quran Page-Level Schema",
   "description": "Page-level structural schema for Mushaf pagination. Pages MUST be ordered by pageNumber when persisted or exchanged.",
   "type": "object",

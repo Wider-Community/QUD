@@ -1,4 +1,4 @@
-# Quran Page-Level Schema (`quran-page.schema.json`)
+# Quran Page-Level Schema (`schema.json`)
 
 This schema defines the **page-level structure of a Mushaf (Quran copy)** for digital storage, exchange, and validation. It allows representing the mapping of Quranic pages to ayahs, lines, words, and classical divisions like **juz**, **hizb**, and **rub**.  
 
@@ -9,7 +9,7 @@ It is designed to support structured data processing, pagination, indexing, and 
 ## Schema Overview
 
 - **Schema Version:** Draft 2020-12
-- **$id:** `https://example.org/schemas/quran-page.schema.json`
+- **$id:** `schemas/pag-page-layout/schema.json`
 - **Title:** Quran Page-Level Schema
 - **Description:** Defines the structure of a Mushaf page, including metadata and page content references.
 - **Top-Level Type:** `object`  
