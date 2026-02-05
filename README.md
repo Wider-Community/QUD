@@ -107,11 +107,16 @@ Early prototype demos:
 
 ## External Resources
 
-### Quranic NLP Resource Catalog (QUL)
+- [Tarteel Quranic Universal Library](https://qul.tarteel.ai/resources)
+- [QUL Tarteel NLP Resources Catalog](QUL_Tarteel_NLP_Resources_Catalog.md)
+- [Uloom Quran](https://github.com/h9-tec/uloom-quran): A comprehensive AI-powered platform for Quranic Sciences featuring semantic search, comparative tafsir analysis, and the ten Quranic readings
+- [زيــد: النظام المرجعي المتكامل لإدارة محتوى علم القراءات وعلوم القرآن](https://community.itqan.dev/d/221
 
-Comprehensive catalog of Quranic NLP datasets and tools.
 
-[QUL Tarteel NLP Resources Catalog](QUL_Tarteel_NLP_Resources_Catalog.md)
+
+## Research Papers
+[Noor Project](https://www.sciencedirect.com/science/article/pii/S235234092500664X) (**Very relevant**): A complete, multi-layered quranic treebank dataset with hybrid syntactic annotations for classical arabic processing
+
 
 ### Open-Source Tools
 
@@ -120,14 +125,6 @@ Comprehensive catalog of Quranic NLP datasets and tools.
 | [API Layer Platform](https://apilayer.com/) | API marketplace |
 | [OpenRouter SDKs](https://github.com/OpenRouterTeam) | LLM routing SDKs |
 | [Data Peek](https://github.com/Rohithgilla12/data-peek) | Lightweight SQL viewer |
-
----
-
-## Research Papers
-[Noor Project](https://www.sciencedirect.com/science/article/pii/S235234092500664X) (**Very relevant**): A complete, multi-layered quranic treebank dataset with hybrid syntactic annotations for classical arabic processing
-
-
---- 
 
 ## AI Coding Practices
 
@@ -160,30 +157,6 @@ We use **GitHub Projects** to track all research and development work. [QUD Rese
 6. Implement reviewer feedback
 7. **Set End Date** when complete
 8. **Move to "Done"** and close the issue
-
-### Adding a New Issue
-
-1. Create issue with title format: `[PREFIX-###] Title`
-   - Prefixes: `LF`, `SH`, `CLM`, `MJ`, `MD`, `QB`, `AI`, `MN`
-2. Use this body structure (no metadata - that goes in fields):
-   ```markdown
-   ## Research Questions
-   - **RQ1**: Question here?
-   - **Related**: RR-001, RR-002
-
-   ## Description
-   Description in English.
-
-   الوصف بالعربية.
-
-   ## Acceptance Criteria
-   - [ ] Criterion 1
-   - [ ] Criterion 2
-
-   ## References (Primary)
-   - `/path/to/file.md` - Description
-   ```
-3. Add issue to project and set all 4 fields (System, Category, Priority, Issue Type)
 
 ---
 
