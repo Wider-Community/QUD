@@ -1,0 +1,21 @@
+{
+  "$id": "https://qud.wider-community.org/schemas/lin-line-layout/schema.json",
+  "type": "object",
+  "properties": {
+    "line_index": { "type": "integer", "description": "ترتيب السطر في الصفحة" },
+    "line_type": { "enum": ["verse_text", "surah_header", "basmala"] },
+    "visual_properties": {
+      "type": "object",
+      "properties": {
+        "font_family": { "type": "string" },
+        "line_height": { "type": "number" },
+        "justification": { "const": "kashida" }
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "items": { "$ref": "../wrd-word-structure/schema.json" }
+    }
+  },
+  "required": ["line_index", "line_type", "tokens"]
+}
