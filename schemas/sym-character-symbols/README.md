@@ -1,11 +1,11 @@
 # SYM: Character Symbols
 
-Schema for symbols that modify base letters in the Quranic text — diacritics, extensions, stop signs, tajweed marks, and tatweel.
+Schema for symbols that modify base letters in the Quranic text — diacritics, extensions, tajweed marks, and tatweel.
 
 ## Files
 
 - `schema.json` — Symbol instance schema (lean, 3 fields per record)
-- `symbol_catalog.json` — Symbol catalog schema (discriminated union defining ~30 symbol types)
+- `symbol_catalog.json` — Symbol catalog schema (discriminated union defining ~24 symbol types)
 - `models.py` — Pydantic models for both catalog entries and instances
 - `hafs_symbols.md` — Full symbol categorization and cardinality analysis from Uthmanic Hafs v2.0
 
@@ -21,7 +21,6 @@ Reference data for all symbol types, keyed by `symbol_codepoint`. Uses a discrim
 |----------|---------------|
 | `diacritic` | haraka, tanween_closed, tanween_open, sukun, shadda |
 | `extension` | dagger_alef, small_waw, small_yaa, small_high_yaa |
-| `stop_sign` | sili, qili, lazim, jaiz, either_of, seen_sakt |
 | `tajweed` | maddah, iqlab_above/below, silent_alef/vowel, imala, ishmam_tasheel, small_noon, small_seen |
 | `tatweel` | tatweel |
 
@@ -41,24 +40,28 @@ This avoids repeating name, category, and Unicode metadata across ~300,000 insta
 
 Key findings from the Hafs symbol analysis (see `hafs_symbols.md`):
 
-- **Cardinality**: At most 1 diacritic per letter (2 when one is shadda), at most 1 extension, at most 1 stop sign, at most 1 tajweed mark. All category pairs can co-occur.
+- **Cardinality**: At most 1 diacritic per letter (2 when one is shadda), at most 1 extension, at most 1 tajweed mark. All category pairs can co-occur.
 - **Rare symbols**: Imala (1 occurrence), Ishmam/Tasheel (2), Small Noon (1), Small Seen (3) — these are narration-specific edge cases.
-- **Dual-function U+06DC**: Small High Seen serves as both a stop sign (sakt, 5 occurrences) and a tajweed mark (small seen, 3 occurrences). The schema handles this by having `seen_sakt` under stop signs and `small_seen` under tajweed as separate subcategories.
 
 ## Design Decisions
 
 ### Non-letter symbols excluded
 
-Symbols that don't modify a base letter — Rub El Hizb (U+06DE), Sajdah marks (U+06E9, U+06E4), and aya end markers — are **not** included in this schema. Every SYM record requires a `character_ref` FK to the CHR layer, and these symbols don't attach to a letter.
+Symbols that don't modify a base letter are **not** included in this schema. Every SYM record requires a `character_ref` FK to the CHR layer, and these symbols don't attach to a letter:
 
-These belong in either:
+- **Stop signs** — While Unicode places these as combining marks, they semantically belong at word/sentence level. A stop sign indicates where a reader *may* or *must* pause — this is a property of the recitation flow between words, not a modification of a single letter.
+- **Rub El Hizb** (U+06DE) — Marks structural divisions
+- **Sajdah marks** (U+06E9, U+06E4) — Verse-level prostration indicators
+- **Aya end markers** — Delimit verses
+
+These belong in:
+- **SNT (Sentence Structure)** — Stop signs define waqf/pause structure at sentence level
 - **DIV (Division Structure)** — Rub El Hizb marks structural divisions
-- **AYA (Verse Structure)** — Aya end markers delimit verses
-- A **separate layer** if non-letter symbols need their own entity model
+- **AYA (Verse Structure)** — Aya end markers and sajdah marks
 
 ### Normalized catalog + lean instances
 
-The schema is split into a **symbol catalog** (~30 reference entries) and **symbol instances** (~300,000 records). This follows the project's architectural principle of no redundant storage (`schemas/README.md`). Fields like `symbol_name`, `symbol_char`, `unicode_name`, `category`, and `subcategory` are properties of the symbol *type*, not the instance — repeating them per record would add ~24 MB of redundant data. Instead, each instance carries only `symbol_codepoint` as an FK to the catalog.
+The schema is split into a **symbol catalog** (~24 reference entries) and **symbol instances** (~300,000 records). This follows the project's architectural principle of no redundant storage (`schemas/README.md`). Fields like `symbol_name`, `symbol_char`, `unicode_name`, `category`, and `subcategory` are properties of the symbol *type*, not the instance — repeating them per record would add ~24 MB of redundant data. Instead, each instance carries only `symbol_codepoint` as an FK to the catalog.
 
 Alternatives considered:
 - **Denormalized (self-contained records)** — every instance carries all metadata. Simpler to read in isolation, but violates the project's normalization goals and repeats static data across hundreds of thousands of records.
@@ -82,7 +85,7 @@ The catalog uses `oneOf` with a `category` discriminator per the project's schem
 
 ### Ordering convention needed
 
-The `sym{n}` index requires a stable ordering of symbols on a character. A character carrying symbols from multiple categories (e.g., Fatha + Maddah + Qili) needs a defined rule for which is `sym1`, `sym2`, `sym3`. Without this, two implementations could assign different indices to the same symbols.
+The `sym{n}` index requires a stable ordering of symbols on a character. A character carrying symbols from multiple categories (e.g., Fatha + Maddah) needs a defined rule for which is `sym1`, `sym2`. Without this, two implementations could assign different indices to the same symbols.
 
 Proposed fixed priority:
 
@@ -91,8 +94,7 @@ Proposed fixed priority:
 | 1 | diacritic |
 | 2 | extension |
 | 3 | tajweed |
-| 4 | stop_sign |
-| 5 | tatweel |
+| 4 | tatweel |
 
 Within the same category (rare — cardinality is 0..1 per category), sort by codepoint ascending.
 
@@ -102,11 +104,10 @@ Within the same category (rare — cardinality is 0..1 per category), sort by co
 |-------|--------|----------|----------|------------------|
 | sym1 | Fatha | diacritic | 1 | `hafs:s2:v255:w4:c1:sym1` |
 | sym2 | Maddah | tajweed | 3 | `hafs:s2:v255:w4:c1:sym2` |
-| sym3 | Qili | stop_sign | 4 | `hafs:s2:v255:w4:c1:sym3` |
 
 ### Edition context missing from UUID
 
-Symbols vary not just by narration but by mushaf type and edition. Stop signs, tajweed notation, and even some diacritics differ across editions (e.g., King Fahd Complex vs Cairo edition). The current name string uses only narration, meaning two editions of Hafs would produce the same UUID for different symbol sets — a collision.
+Symbols vary not just by narration but by mushaf type and edition. Tajweed notation and even some diacritics differ across editions (e.g., King Fahd Complex vs Cairo edition). The current name string uses only narration, meaning two editions of Hafs would produce the same UUID for different symbol sets — a collision.
 
 **Proposed fix:**
 
@@ -130,9 +131,9 @@ SYM stores the **symbols themselves** — what they are and which letter they si
 |-------|---------------------|
 | **CHR** | SYM → CHR via `character_ref` FK. Each symbol modifies exactly one base letter. |
 | **TJW** | TJW references SYM (and CHR) via FKs. Tajweed *rules* live in TJW — they link letters and symbols to describe relationships (e.g., idghaam connecting a noon symbol on one letter to the following letter). SYM only stores the tajweed *mark* as a visual symbol on a character. |
-| **SNT** | Stop signs in SYM mark where stops can occur. SNT defines sentence/waqf structure. Future cross-layer mappings may link stop sign symbols to SNT sentence boundaries. |
+| **SNT** | Stop signs belong in SNT, not SYM — they define waqf/pause structure at word/sentence level, not letter-level modifications. SNT owns stop sign data and their semantic relationships to recitation flow. |
 | **UTH / QSY** | SYM symbols are orthography-dependent. Uthmani text uses symbols (extensions, tajweed marks) that Qiasy text does not. The same word may carry different symbols in UTH vs QSY representations. |
-| **DIV / AYA** | Non-letter symbols (Rub Hizb, aya markers) excluded from SYM — these possibly belong in DIV/AYA as structural markers. |
+| **DIV / AYA** | Non-letter symbols (Rub Hizb, aya markers, sajdah marks) excluded from SYM — these belong in DIV/AYA as structural markers. |
 
 ### Why tajweed marks stay in SYM, not TJW
 
@@ -142,6 +143,6 @@ Tajweed marks (maddah, iqlab, small seen, etc.) are **visual symbols attached to
 
 SYM is correctly scoped. No split or merge recommended:
 
-- **Not too big** — 5 categories with high field overlap, well served by a single discriminated union schema.
+- **Not too big** — 4 categories with high field overlap, well served by a single discriminated union schema.
 - **Not too small** — Merging into CHR would overload CHR with combining mark logic. Symbols have their own cardinality rules, category taxonomy, and edition-level variation that justify a separate layer.
 - **Clean boundary** — SYM = "what symbols exist on a letter." CHR = "what letter it is." TJW = "what the symbols mean together."

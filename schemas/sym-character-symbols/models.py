@@ -1,11 +1,14 @@
 """SYM: Character Symbols — Pydantic models.
 
-Diacritics, extensions, stop signs, tajweed marks, and tatweel
+Diacritics, extensions, tajweed marks, and tatweel
 for base characters in the Quranic text.
 
 Split into two concerns:
-- Symbol catalog: reference data for ~30 symbol types (discriminated union)
+- Symbol catalog: reference data for ~24 symbol types (discriminated union)
 - Symbol instance: lean per-character records with FK to catalog
+
+Note: Stop signs are excluded from SYM — they belong at word/sentence level
+in SNT (Sentence Structure), not as letter-level modifications.
 """
 
 from __future__ import annotations
@@ -34,15 +37,6 @@ class ExtensionSub(StrEnum):
     SMALL_HIGH_YAA = auto()
 
 
-class StopSignSub(StrEnum):
-    SILI = auto()
-    QILI = auto()
-    LAZIM = auto()
-    JAIZ = auto()
-    EITHER_OF = auto()
-    SEEN_SAKT = auto()
-
-
 class TajweedSub(StrEnum):
     MADDAH = auto()
     IQLAB_ABOVE = auto()
@@ -67,7 +61,7 @@ class _CatalogBase(BaseModel):
         description="Unicode codepoint — primary key (e.g., U+064E)",
     )
     symbol_name: str = Field(
-        description="Human-readable name (e.g., Fatha, Sili, Maddah)"
+        description="Human-readable name (e.g., Fatha, Maddah, Dagger Alef)"
     )
     symbol_char: str = Field(
         description="The actual Unicode character"
@@ -91,11 +85,6 @@ class ExtensionCatalogEntry(_CatalogBase):
     subcategory: ExtensionSub
 
 
-class StopSignCatalogEntry(_CatalogBase):
-    category: Literal["stop_sign"] = "stop_sign"
-    subcategory: StopSignSub
-
-
 class TajweedCatalogEntry(_CatalogBase):
     category: Literal["tajweed"] = "tajweed"
     subcategory: TajweedSub
@@ -110,7 +99,6 @@ SymbolCatalogEntry = Annotated[
     Union[
         DiacriticCatalogEntry,
         ExtensionCatalogEntry,
-        StopSignCatalogEntry,
         TajweedCatalogEntry,
         TatweelCatalogEntry,
     ],

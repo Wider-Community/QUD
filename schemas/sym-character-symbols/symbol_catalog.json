@@ -3,7 +3,7 @@
   "$id": "https://qud.itqan.community/schemas/sym-symbol-catalog.json",
   "title": "SYM: Symbol Catalog",
   "description": "Reference catalog of all symbol types that can appear on base letters. Each entry defines a unique symbol by its Unicode codepoint. The discriminated union constrains valid category/subcategory pairs.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "layer_code": "SYM",
 
   "$defs": {
@@ -17,11 +17,11 @@
         },
         "symbol_name": {
           "type": "string",
-          "description": "Human-readable name used in this project (e.g., Fatha, Sili, Maddah)"
+          "description": "Human-readable name used in this project (e.g., Fatha, Maddah, Dagger Alef)"
         },
         "symbol_char": {
           "type": "string",
-          "description": "The actual Unicode character (e.g., َ ۖ ٓ)"
+          "description": "The actual Unicode character (e.g., َ ٓ ٰ)"
         },
         "unicode_name": {
           "type": "string",
@@ -71,16 +71,6 @@
       }
     },
 
-    "stop_sign_entry": {
-      "allOf": [{ "$ref": "#/$defs/base_catalog_entry" }],
-      "properties": {
-        "category": { "const": "stop_sign" },
-        "subcategory": {
-          "enum": ["sili", "qili", "lazim", "jaiz", "either_of", "seen_sakt"]
-        }
-      }
-    },
-
     "tajweed_entry": {
       "allOf": [{ "$ref": "#/$defs/base_catalog_entry" }],
       "properties": {
@@ -113,7 +103,6 @@
   "oneOf": [
     { "$ref": "#/$defs/diacritic_entry" },
     { "$ref": "#/$defs/extension_entry" },
-    { "$ref": "#/$defs/stop_sign_entry" },
     { "$ref": "#/$defs/tajweed_entry" },
     { "$ref": "#/$defs/tatweel_entry" }
   ],

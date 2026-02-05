@@ -98,9 +98,9 @@ Note: سَلَٰسِلَاْ (76:4) uses *Silent Vowel* (U+0652) in this dataset
 
 | Word | Function | Ref |
 |------|----------|-----|
-| وَيَبۡصُۜطُ | Small seen | 2:245 |
-| بَصۜۡطَةٗۖ | Small seen | 7:69 |
-| ٱلۡمُصَۜيۡطِرُونَ | Small seen | 52:37 |
+| وَيَبۡصُۜطُ | Pronunciation | 2:245 |
+| بَصۜۡطَةٗۖ | Pronunciation | 7:69 |
+| ٱلۡمُصَۜيۡطِرُونَ | Pronunciation | 52:37 |
 | عِوَجَاۜ | Sakt | 18:1 |
 | مَّرۡقَدِنَاۜۗ | Sakt | 36:52 |
 | مَالِيَهۡۜ | Sakt | 69:28 |
@@ -116,10 +116,10 @@ Note: 52:37 uses Small High Seen (U+06DC) above the ص in this dataset (ٱلۡم
 | Function | Count | Examples |
 |----------|------:|----------|
 | Deleted alef after consonant (قاعدة الحذف) | 6,355 | ذَٰلِكَ, ٱلرَّحۡمَٰنِ, دِيَٰرِهِمۡ |
-| Substituted alef after silent waw (قاعدة الابدال) | 750 | ٱلصَّلَوٰةَ, ٱلۡحَيَوٰةِ |
-| After yaa as vocative (يا) | 360 | يَٰٓأَيُّهَا, يَٰقَوۡمِ |
 | Final after alef maqsura (ى) | 1,904 | عَلَىٰ, إِلَىٰ |
 | Medial after alef maqsura (ى) | 338 | أَدۡرَىٰكَ, ٱلتَّوۡرَىٰةَ |
+| Substituted alef after silent waw (قاعدة الابدال) | 750 | ٱلصَّلَوٰةَ, ٱلۡحَيَوٰةِ |
+| After yaa as vocative (يا) | 360 | يَٰٓأَيُّهَا, يَٰقَوۡمِ |
 | After hamza (ء) — via tatweel or direct | 17 | ٱلۡـَٰٔنَ, خَطِيٓـَٰٔتِهِمۡ, سَوۡءَٰتِهِمَا, قُرۡءَٰنًا, بُرَءَٰٓؤُاْ |
 | After alef hamza (أ) | 1 | ءَأَٰلِهَتُنَا |
 | Silent — not pronounced | 1 | فَٱدَّٰرَٰءۡتُمۡ (2:72) — second dagger alef after ر is silent |
@@ -138,7 +138,7 @@ Note: 52:37 uses Small High Seen (U+06DC) above the ص in this dataset (ٱلۡم
 |----------|------:|----------|
 | Silah after word-final haa with kasra (مد الصلة) | 935 | بِهِۦ, ءَايَٰتِهِۦ |
 | Deleted yaa (قاعدة الحذف) | 20 | يُحۡيِۦ, يَسۡتَحۡيِۦٓ |
-| Special (27:36:8) | 1 | ءَاتَىٰنِۦَ |
+| Special as consonant (27:36:8) | 1 | ءَاتَىٰنِۦَ |
 | Special (106:2:1) | 1 | إِۦلَٰفِهِمۡ |
 
 
