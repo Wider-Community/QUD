@@ -8,13 +8,6 @@ Auto-generated from all feature plans. Last updated: 2025-11-03
 
 - Python 3.11+ (Tier 1 experimental research code) (001-quranic-layer-architecture)
 
-## Project Structure
-
-```text
-src/
-tests/
-```
-
 ## Commands
 
 cd src [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLOGIES] pytest [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLOGIES] ruff check .
@@ -23,11 +16,21 @@ cd src [ONLY COMMANDS FOR ACTIVE TECHNOLOGIES][ONLY COMMANDS FOR ACTIVE TECHNOLO
 
 Python 3.11+ (Tier 1 experimental research code): Follow standard conventions
 
-## Recent Changes
-- 001-quranic-layer-architecture: Added Python 3.11+ (Tier 1 experimental research code)
-- 001-quranic-layer-architecture: Added Python 3.11+ (Tier 1 experimental research code) + NLTK, NLP libraries, jsonschema, Pydantic, Jupyter (notebooks), matplotlib/seaborn/plotly (visualization)
+## Schema Verification
 
-- 001-quranic-layer-architecture: Added Python 3.11+ (Tier 1 experimental research code)
+After modifying any layer's `schema.json` or `models.py`:
 
-<!-- MANUAL ADDITIONS START -->
-<!-- MANUAL ADDITIONS END -->
+1. **Validate JSON schemas** against metaschema:
+   ```bash
+   check-jsonschema --check-metaschema schemas/<layer>/schema.json
+   ```
+
+2. **Verify Pydantic models match JSON schemas**: Convert Pydantic models to JSON Schema and confirm they produce equivalent output to the hand-written JSON schema:
+   ```python
+   from schemas.<layer>.models import <Model>
+   print(<Model>.model_json_schema())
+   ```
+   Compare the output against the corresponding `.json` schema file.
+
+3. Confirm compliance with `schemas/README.md`
+

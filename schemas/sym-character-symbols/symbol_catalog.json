@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://qud.itqan.community/schemas/sym-symbol-catalog.json",
+  "title": "SYM: Symbol Catalog",
+  "description": "Reference catalog of all symbol types that can appear on base letters. Each entry defines a unique symbol by its Unicode codepoint. The discriminated union constrains valid category/subcategory pairs.",
+  "version": "2.0.0",
+  "layer_code": "SYM",
+
+  "$defs": {
+    "base_catalog_entry": {
+      "type": "object",
+      "properties": {
+        "symbol_codepoint": {
+          "type": "string",
+          "pattern": "^U\\+[0-9A-F]{4,6}$",
+          "description": "Unicode codepoint — primary key (e.g., U+064E for Fatha)"
+        },
+        "symbol_name": {
+          "type": "string",
+          "description": "Human-readable name used in this project (e.g., Fatha, Maddah, Dagger Alef)"
+        },
+        "symbol_char": {
+          "type": "string",
+          "description": "The actual Unicode character (e.g., َ ٓ ٰ)"
+        },
+        "unicode_name": {
+          "type": "string",
+          "description": "Official Unicode character name (e.g., Small High Dotless Head of Khah)"
+        },
+        "category": {
+          "type": "string",
+          "description": "Top-level symbol category (discriminator)"
+        },
+        "subcategory": {
+          "type": "string",
+          "description": "Fine-grained symbol type within the category"
+        },
+        "narration_specific": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this symbol varies by narration (e.g., present in Hafs but not Warsh)"
+        }
+      },
+      "required": [
+        "symbol_codepoint",
+        "symbol_name",
+        "symbol_char",
+        "unicode_name",
+        "category",
+        "subcategory"
+      ]
+    },
+
+    "diacritic_entry": {
+      "allOf": [{ "$ref": "#/$defs/base_catalog_entry" }],
+      "properties": {
+        "category": { "const": "diacritic" },
+        "subcategory": {
+          "enum": ["haraka", "tanween_closed", "tanween_open", "sukun", "shadda"]
+        }
+      }
+    },
+
+    "extension_entry": {
+      "allOf": [{ "$ref": "#/$defs/base_catalog_entry" }],
+      "properties": {
+        "category": { "const": "extension" },
+        "subcategory": {
+          "enum": ["dagger_alef", "small_waw", "small_yaa", "small_high_yaa"]
+        }
+      }
+    },
+
+    "tajweed_entry": {
+      "allOf": [{ "$ref": "#/$defs/base_catalog_entry" }],
+      "properties": {
+        "category": { "const": "tajweed" },
+        "subcategory": {
+          "enum": [
+            "maddah",
+            "iqlab_above",
+            "iqlab_below",
+            "silent_alef",
+            "silent_vowel",
+            "imala",
+            "ishmam_tasheel",
+            "small_noon",
+            "small_seen"
+          ]
+        }
+      }
+    },
+
+    "tatweel_entry": {
+      "allOf": [{ "$ref": "#/$defs/base_catalog_entry" }],
+      "properties": {
+        "category": { "const": "tatweel" },
+        "subcategory": { "const": "tatweel" }
+      }
+    }
+  },
+
+  "oneOf": [
+    { "$ref": "#/$defs/diacritic_entry" },
+    { "$ref": "#/$defs/extension_entry" },
+    { "$ref": "#/$defs/tajweed_entry" },
+    { "$ref": "#/$defs/tatweel_entry" }
+  ],
+  "discriminator": { "propertyName": "category" }
+}
