@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://qud.wider-community.org/schemas/lin-line-layout/schema.json",
   "type": "object",
   "required": ["line_id", "page_ref", "line_index", "line_type", "first_word_ref", "last_word_ref"],
@@ -6,7 +7,11 @@
     "line_id": { "type": "string", "description": "Unique ID for the line." },
     "page_ref": { "type": "string", "description": "Reference to the parent page." },
     "line_index": { "type": "integer", "description": "Line number on the page." },
-    "line_type": { "enum": ["verse_text", "surah_header", "basmala"] },
+    "line_type": { 
+      "type": "string", 
+      "enum": ["verse_text", "surah_header", "basmala"], 
+      "description": "Type of content in this line." 
+    },
     "start_verse_ref": { "type": "string", "description": "Reference to the first verse in this line." },
     "first_word_ref": { "type": "string", "description": "ID of the first word." },
     "last_word_ref": { "type": "string", "description": "ID of the last word." },
