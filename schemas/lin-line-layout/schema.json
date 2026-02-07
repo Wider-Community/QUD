@@ -1,49 +1,26 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://qud.itqan.community/schemas/lin-line-layout.json",
-  "title": "LIN: Line Layout",
-  "description": "Line-level composition and line breaks",
-  "version": "1.0.0",
-  "layer_code": "LIN",
+  "$id": "https://qud.wider-community.org/schemas/lin-line-layout/schema.json",
   "type": "object",
-  "required": ["line_id", "page_ref", "line_number", "start_verse_ref", "end_verse_ref"],
+  "required": ["line_id", "page_ref", "line_index", "line_type", "first_word_ref", "last_word_ref"],
   "properties": {
-    "line_id": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Unique identifier for this line"
+    "line_id": { "type": "string", "description": "Unique ID for the line." },
+    "page_ref": { "type": "string", "description": "Reference to the parent page." },
+    "line_index": { "type": "integer", "description": "Line number on the page." },
+    "line_type": { 
+      "type": "string", 
+      "enum": ["verse_text", "surah_header", "basmala"], 
+      "description": "Type of content in this line." 
     },
-    "page_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to PAG (Page Layout)"
-    },
-    "line_number": {
-      "type": "integer",
-      "minimum": 1,
-      "maximum": 20,
-      "description": "Line number on page (1-15 typically)"
-    },
-    "start_verse_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to AYA (Verse Structure)"
-    },
-    "end_verse_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to AYA (Verse Structure)"
-    },
-    "start_character_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to CHR (Character Composition) - if line starts mid-verse"
-    },
-    "end_character_ref": {
-      "type": "string",
-      "format": "uuid",
-      "description": "Foreign key to CHR (Character Composition) - if line ends mid-verse"
+    "start_verse_ref": { "type": "string", "description": "Reference to the first verse in this line." },
+    "first_word_ref": { "type": "string", "description": "ID of the first word." },
+    "last_word_ref": { "type": "string", "description": "ID of the last word." },
+    "structural_features": {
+      "type": "object",
+      "properties": {
+        "is_indented": { "type": "boolean", "default": false },
+        "has_sajda": { "type": "boolean", "default": false }
+      }
     }
-  },
-  "additionalProperties": false
+  }
 }
