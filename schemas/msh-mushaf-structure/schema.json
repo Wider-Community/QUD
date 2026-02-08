@@ -55,7 +55,7 @@
     },
     "total_words": {
       "type": "integer",
-      "minimum": 300000,
+      "minimum": 77000,
       "description": "Total word count"
     }
   },
