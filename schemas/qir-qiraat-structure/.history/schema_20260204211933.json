@@ -56,6 +56,8 @@
     "canonical_category": {
       "type": "string",
       "enum": [
+        "ten_canonical",
+        "additional",
         "nafi",
         "ibn_kathir",
         "abu_amr",
@@ -67,7 +69,7 @@
         "yaqub",
         "khalaf"
       ],
-      "description": "Primary Imam associated with the narration"
+      "description": "One of 10 canonical Qiraat (العشر) or additional"
     },
     "source_authority": {
       "type": "string",
@@ -77,57 +79,7 @@
       "type": "string",
       "format": "uuid",
       "description": "Foreign key to RDR (Readers & Narrators)"
-    },
-    "narrator_lineage": {
-      "type": "array",
-      "description": "Ordered chain of transmission (isnad) for this narration",
-      "items": {
-        "type": "string",
-        "format": "uuid"
-      }
-    },
-    "transmission_confidence": {
-      "type": "object",
-      "description": "Scholarly confidence level of the transmission chain",
-      "properties": {
-        "level": {
-          "type": "string",
-          "enum": ["mutawatir", "mashhur", "ahad"]
-        },
-        "notes": {
-          "type": "string",
-          "description": "Scholarly notes regarding the transmission strength"
-        }
-      }
-    },
-     "source_text_reference": {
-      "type": "array",
-      "description": "References to Quranic text positions for this narration",
-      "items": {
-        "type": "object",
-        "properties": {
-          "sura": { "type": "integer" },
-          "aya": { "type": "integer" },
-          "text_variant": { "type": "string" }
-        }
-      }
-    },
-    "audio_examples": {
-      "type": "array",
-      "description": "Links to audio recitations of this narration",
-      "items": { "type": "string", "format": "uri" }
-    },
-    "regional_usage": {
-      "type": "array",
-      "description": "Regions where this narration is commonly used",
-      "items": { "type": "string" }
-    },
-    "preferred_educational_usage": {
-      "type": "boolean",
-      "description": "Indicates if this narration is recommended for educational purposes"
     }
-
-  
   },
   "additionalProperties": false
 }

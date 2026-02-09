@@ -56,6 +56,8 @@
     "canonical_category": {
       "type": "string",
       "enum": [
+        "ten_canonical",
+        "additional",
         "nafi",
         "ibn_kathir",
         "abu_amr",
@@ -67,7 +69,7 @@
         "yaqub",
         "khalaf"
       ],
-      "description": "Primary Imam associated with the narration"
+      "description": "One of 10 canonical Qiraat (العشر) or additional"
     },
     "source_authority": {
       "type": "string",
