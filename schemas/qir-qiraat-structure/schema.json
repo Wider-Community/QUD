@@ -56,7 +56,6 @@
     "canonical_category": {
       "type": "string",
       "enum": [
-        "ten_canonical",
         "additional",
         "nafi",
         "ibn_kathir",
