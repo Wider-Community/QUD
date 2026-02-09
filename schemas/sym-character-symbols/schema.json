@@ -1,75 +1,28 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://qud.itqan.community/schemas/sym-character-symbols.json",
-  "title": "SYM: Character Symbols",
-  "description": "Diacritical marks, tajweed symbols, and visual rendering rules for each character",
-  "version": "1.0.0",
+  "title": "SYM: Character Symbol Instance",
+  "description": "A single symbol instance on a base character. References the symbol catalog via symbol_codepoint for type metadata (name, category, Unicode details).",
+  "version": "2.0.0",
   "layer_code": "SYM",
+
   "type": "object",
-  "required": [
-    "symbol_id",
-    "character_ref",
-    "symbol_type",
-    "symbol_codepoint"
-  ],
   "properties": {
     "symbol_id": {
       "type": "string",
       "format": "uuid",
-      "description": "Unique identifier for this symbol instance"
+      "description": "Unique identifier for this symbol instance (UUID v5 from naming convention)"
     },
     "character_ref": {
       "type": "string",
       "format": "uuid",
-      "description": "Foreign key to CHR (Character Composition) - The base character this symbol modifies"
-    },
-    "symbol_type": {
-      "type": "string",
-      "enum": [
-        "tashkeel",
-        "tajweed",
-        "hamza",
-        "maddah",
-        "tanween",
-        "shadda",
-        "sukun",
-        "fatha",
-        "kasra",
-        "damma"
-      ],
-      "description": "Type of diacritical symbol"
+      "description": "Foreign key to CHR (Character Composition) — the base letter this symbol modifies"
     },
     "symbol_codepoint": {
       "type": "string",
       "pattern": "^U\\+[0-9A-F]{4,6}$",
-      "description": "Unicode codepoint for the diacritic (e.g., U+064E for fatha)"
-    },
-    "tajweed_rule": {
-      "type": "string",
-      "description": "Tajweed rule this symbol represents (if applicable)"
-    },
-    "narration_specific": {
-      "type": "boolean",
-      "default": false,
-      "description": "Does this symbol vary by narration?"
-    },
-    "positional_form": {
-      "type": "string",
-      "enum": ["isolated", "initial", "medial", "final"],
-      "description": "Rendering context for the character"
-    },
-    "ligature_context": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "format": "uuid"
-      },
-      "description": "UUIDs of characters involved if ligature (e.g., لا lam-alif)"
-    },
-    "font_variant": {
-      "type": "string",
-      "description": "Font-specific rendering rule (e.g., kfgqpc_hafs_uthmanic_script)"
+      "description": "Unicode codepoint — foreign key to symbol catalog (e.g., U+064E for Fatha)"
     }
   },
-  "additionalProperties": false
+  "required": ["symbol_id", "character_ref", "symbol_codepoint"]
 }
