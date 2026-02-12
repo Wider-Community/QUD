@@ -35,15 +35,16 @@ Occurs when a madd letter is not followed by hamzah or sukoon.
 | نُوحِي  | 7:101 |
 ## Exceptions
 
-If followed by hamzah → becomes Muttasil or Munfasil
+    If followed by hamzah → becomes Muttasil or Munfasil
 
-If followed by permanent sukoon → becomes Lazim
+    If followed by permanent sukoon → becomes Lazim
 
-If followed by temporary sukoon (stop) → becomes ‘Arid
+    If followed by temporary sukoon (stop) → becomes ‘Arid
 
-So technically, it has no exception, but it can change category depending on context.
+  So technically, it has no exception, but it can change category depending on context.
 # Madd Badal (مد بدل)
 هو أن يتقدم الهمز على حرف المد في كلمة واحدة.
+
 Length in Hafs: 2 harakat (fixed)
 
 | Word      | Ref   |
@@ -58,6 +59,7 @@ Note: No extension beyond 2 in Hafs.
 
 # Madd Muttasil (مد متصل)
 هو أن يأتي بعد حرف المد همز في نفس الكلمة.
+
 Length in Hafs: 4–5 harakat
 
 | Word       | Ref  |
@@ -69,10 +71,11 @@ Length in Hafs: 4–5 harakat
 
 Obligatory extension.
 ## Exceptions
- Cannot be shortened to 2 in Hafs
- Only variation: 4 or 5
+   Cannot be shortened to 2 in Hafs
+   Only variation: 4 or 5
 # Madd Munfasil (مد منفصل)
 هو أن يقع حرف المد في آخر كلمة، ويأتي الهمز في أول الكلمة التي بعدها.
+
 Length in Hafs: 4–5 harakat
 
 | Phrase               | Ref   |
@@ -84,9 +87,9 @@ Length in Hafs: 4–5 harakat
 
 ## Exceptions
 
-  In theoretical riwayah, qasr (2) is transmitted
+    In theoretical riwayah, qasr (2) is transmitted
 
-  But in common Hafs performance today → no qasr
+    But in common Hafs performance today → no qasr
 ## Special Case in Madd Munfasil (Within the Same Word)
 Although the hamzah is not in a separate written word, scholars classify this word under the ruling of Madd Munfasil.
 
@@ -131,7 +134,8 @@ Very rare (only two occurrences in Surah Yunus).
 ## C) Harfi (in Muqatta‘at)
 
 Occurs in disjoint letters
-## Example: الم (2:1)
+## Example:
+|الم | 2:1 | 
 
 ## Exceptions
 
@@ -145,6 +149,7 @@ So: no exception.
 
 # Madd ‘Arid lil-Sukoon (مد عارض للسكون)
 هو أن يأتي بعد حرف المد سكون عارض بسبب الوقف.
+
 Length: 2 / 4 / 6
 
 Occurs only at stop.
@@ -157,19 +162,20 @@ Occurs only at stop.
 
 ## Exceptions
 
- Only applies at stop
+   Only applies at stop
 
- If continuing (wasl) → reverts to original rule (usually Tabee‘i)
+   If continuing (wasl) → reverts to original rule (usually Tabee‘i)
 
 # Madd Leen (مد لين)
 هو إطالة الواو أو الياء الساكنتين المفتوح ما قبلهما عند الوقف.
-Pattern:
 
-وْ or يْ
+## Pattern:
 
-preceded by fatḥa
+وْ or يْ 
 
-stop required
+     preceded by fatḥa
+
+     stop required
 
 Length at stop: 2 / 4 / 6
 
@@ -250,6 +256,7 @@ Although written as one token, assimilation occurs internally.
 - المد المنفصل لا يُقصر في الأداء المشهور
 
 ---
+
 
 
 
