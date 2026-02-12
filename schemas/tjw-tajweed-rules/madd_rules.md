@@ -21,7 +21,7 @@ This document covers madd categories in Hafs ‘an ‘Asim:
 
 
 # Madd Tabee‘i (مد طبيعي)
-
+هو إطالة الصوت بحرف من حروف المد الثلاثة إذا لم يأتِ بعده همز ولا سكون.
 Length: 2 harakat
 
 Occurs when a madd letter is not followed by hamzah or sukoon.
@@ -32,8 +32,17 @@ Occurs when a madd letter is not followed by hamzah or sukoon.
 | يَقُولُ | 2:8   |
 | فِي     | 1:7   |
 | نُوحِي  | 7:101 |
-# Madd Badal (مد بدل)
+## Exceptions
 
+If followed by hamzah → becomes Muttasil or Munfasil
+
+If followed by permanent sukoon → becomes Lazim
+
+If followed by temporary sukoon (stop) → becomes ‘Arid
+
+So technically, it has no exception, but it can change category depending on context.
+# Madd Badal (مد بدل)
+هو أن يتقدم الهمز على حرف المد في كلمة واحدة.
 Length in Hafs: 2 harakat (fixed)
 
 | Word      | Ref   |
@@ -44,9 +53,10 @@ Length in Hafs: 2 harakat (fixed)
 | ءَامَنَ   | 3:84  |
 
 Note: No extension beyond 2 in Hafs.
+      No exception in Hafs.
 
 # Madd Muttasil (مد متصل)
-
+هو أن يأتي بعد حرف المد همز في نفس الكلمة.
 Length in Hafs: 4–5 harakat
 
 | Word       | Ref  |
@@ -57,9 +67,11 @@ Length in Hafs: 4–5 harakat
 | أُولَٰئِكَ | 2:5  |
 
 Obligatory extension.
-
+## Exceptions
+ Cannot be shortened to 2 in Hafs
+ Only variation: 4 or 5
 # Madd Munfasil (مد منفصل)
-
+هو أن يقع حرف المد في آخر كلمة، ويأتي الهمز في أول الكلمة التي بعدها.
 Length in Hafs: 4–5 harakat
 
 | Phrase               | Ref   |
@@ -69,10 +81,29 @@ Length in Hafs: 4–5 harakat
 | إِنَّا أَعْطَيْنَاكَ | 108:1 |
 | قَالُوا آمَنَّا      | 2:136 |
 
-No qasr (2) in standard Hafs performance.
+## Exceptions
+
+  In theoretical riwayah, qasr (2) is transmitted
+
+  But in common Hafs performance today → no qasr
+## Special Case in Madd Munfasil (Within the Same Word)
+Although the hamzah is not in a separate written word, scholars classify this word under the ruling of Madd Munfasil.
+
+| Word       | Analysis                     | Type                                        | Ruling in Ḥafṣ |
+| ---------- | ---------------------------- | ------------------------------------------- | -------------- |
+| هَٰؤُلَاءِ | هـ + long vowel (ا) + hamzah | Madd Munfasil (Constructive / Ruling-based) | 4 or 5 counts  |
+
+## For this reason, it takes the ruling of: Madd Munfasil (4–5 counts in Ḥafṣ).
+
+  The word has a compound linguistic structure.
+
+  There is a phonetic separation between the madd letter and the hamzah.
+
+  The hamzah is not directly attached to the madd letter in the same way as in Madd Muttasil.
+
 
 # Madd Lazim (مد لازم)
-
+هو أن يأتي بعد حرف المد سكون أصلي ثابت وصلاً ووقفًا.
 Length: 6 harakat (mandatory)
 
 Occurs when madd letter is followed by permanent sukoon.
@@ -98,10 +129,21 @@ Very rare (only two occurrences in Surah Yunus).
 
 ## C) Harfi (in Muqatta‘at)
 
-See section below.
+Occurs in disjoint letters
+## Example: الم (2:1)
+
+## Exceptions
+
+ Cannot be shortened
+
+Always 6
+
+No variation in Hafs
+
+So: no exception.
 
 # Madd ‘Arid lil-Sukoon (مد عارض للسكون)
-
+هو أن يأتي بعد حرف المد سكون عارض بسبب الوقف.
 Length: 2 / 4 / 6
 
 Occurs only at stop.
@@ -112,10 +154,14 @@ Occurs only at stop.
 | الرَّحِيمِ           | 1:3 |
 | نَسْتَعِينُ          | 1:5 |
 
-Temporary sukoon caused by waqf.
+## Exceptions
+
+ Only applies at stop
+
+ If continuing (wasl) → reverts to original rule (usually Tabee‘i)
 
 # Madd Leen (مد لين)
-
+هو إطالة الواو أو الياء الساكنتين المفتوح ما قبلهما عند الوقف.
 Pattern:
 
 وْ or يْ
@@ -132,10 +178,14 @@ Length at stop: 2 / 4 / 6
 | بَيْت   | 2:125 |
 | قُرَيْش | 106:1 |
 
-No madd in wasl.
+## Exceptions
+
+ No madd in wasl
+
+ Only at stop
 
 # Madd in Muqatta‘at (الحروف المقطعة)
-
+هو المد الواقع في أسماء الحروف المقطعة في أوائل السور.
 Appears in 29 surahs.
 
 Each letter is pronounced independently.
@@ -199,6 +249,7 @@ Although written as one token, assimilation occurs internally.
 - المد المنفصل لا يُقصر في الأداء المشهور
 
 ---
+
 
 
 
