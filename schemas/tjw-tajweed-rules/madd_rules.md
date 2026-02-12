@@ -21,7 +21,8 @@ This document covers madd categories in Hafs ‘an ‘Asim:
 
 
 # Madd Tabee‘i (مد طبيعي)
-هو إطالة الصوت بحرف من حروف المد الثلاثة إذا لم يأتِ بعده همز ولا سكون.
+هو إطالة الصوت بحرف من حروف المد الثلاثة إذا لم يأتِ بعده همز ولا سكون
+
 Length: 2 harakat
 
 Occurs when a madd letter is not followed by hamzah or sukoon.
@@ -249,6 +250,7 @@ Although written as one token, assimilation occurs internally.
 - المد المنفصل لا يُقصر في الأداء المشهور
 
 ---
+
 
 
 
