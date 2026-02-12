@@ -1,4 +1,4 @@
-#Madd (Hafs Riwayah)
+# Madd (Hafs Riwayah)
 
 Analysis of madd (vowel prolongation) rules in Uthmanic Hafs v2.0 dataset.
 
@@ -194,4 +194,5 @@ Although written as one token, assimilation occurs internally.
 - المد المنفصل لا يُقصر في الأداء المشهور
 
 ---
+
 
