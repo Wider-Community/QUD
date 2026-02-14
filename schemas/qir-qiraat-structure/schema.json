@@ -23,7 +23,7 @@
     },
     "reader_name_ar": {
       "type": "string",
-      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "pattern": "^[\\u0600-\\u06FF\\s]+$",
       "description": "Reader (narrator) name in Arabic (e.g., حفص)"
     },
     "reader_name_en": {
@@ -32,7 +32,7 @@
     },
     "narrator_name_ar": {
       "type": "string",
-      "pattern": "^[\u0600-\u06FF\\s]+$",
+      "pattern": "^[\\u0600-\\u06FF\\s]+$",
       "description": "Imam (Qari) name in Arabic (e.g., عاصم)"
     },
     "narrator_name_en": {
@@ -47,17 +47,26 @@
       "type": "object",
       "description": "Tajweed rules specific to this narration",
       "properties": {
-        "idgham_rules": { "type": "array", "items": { "type": "string" } },
-        "madd_rules": { "type": "array", "items": { "type": "string" } },
-        "pronunciation_variants": { "type": "object" },
-        "pause_rules": { "type": "array", "items": { "type": "string" } }
+        "idgham_rules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "madd_rules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "pronunciation_variants": {
+          "type": "object"
+        },
+        "pause_rules": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
       }
     },
     "canonical_category": {
       "type": "string",
       "enum": [
-        "ten_canonical",
-        "additional",
         "nafi",
         "ibn_kathir",
         "abu_amr",
@@ -69,7 +78,7 @@
         "yaqub",
         "khalaf"
       ],
-      "description": "One of 10 canonical Qiraat (العشر) or additional"
+      "description": "Primary Imam associated with the narration"
     },
     "source_authority": {
       "type": "string",
@@ -79,6 +88,47 @@
       "type": "string",
       "format": "uuid",
       "description": "Foreign key to RDR (Readers & Narrators)"
+    },
+    "narrator_lineage": {
+      "type": "array",
+      "description": "Ordered chain of transmission (isnad) for this narration",
+      "items": {
+        "type": "string",
+        "format": "uuid"
+      }
+    },
+    "transmission_confidence": {
+      "type": "object",
+      "description": "Scholarly confidence level of the transmission chain",
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["mutawatir", "mashhur", "ahad"]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Scholarly notes regarding the transmission strength"
+        }
+      }
+    },
+    "audio_examples": {
+      "type": "array",
+      "description": "Links to audio recitations of this narration",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    },
+    "regional_usage": {
+      "type": "array",
+      "description": "Regions where this narration is commonly used",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preferred_educational_usage": {
+      "type": "boolean",
+      "description": "Indicates if this narration is recommended for educational purposes"
     }
   },
   "additionalProperties": false
