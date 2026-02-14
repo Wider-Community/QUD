@@ -16,12 +16,12 @@ This section covers the rules applied to Noon Sakinah and Tanween in Hafs ‘an 
 *   **Noon Sakinah:** A Noon free from any vowel (Fatha, Damma, Kasra) that is fixed in pronunciation and writing, both in continuing and stopping.
 *   **Tanween:** An extra Noon Sakinah attached to the end of nouns phonetically but not in writing, and in continuing but not in stopping.
 
-| Rule | Arabic | Description |
-| ---- | ------ | ----------- |
-| Izhaar Halqi | إظهار حلقي | Clear pronunciation without extra ghunnah |
-| Idgham | إدغام | Merging of the Noon/Tanween into the next letter |
-| Iqlab | إقلاب | Transformation of Noon/Tanween into a hidden Meem |
-| Ikhfaa Haqiqi | إخفاء حقيقي | Hiding the Noon/Tanween with nasalization |
+| # | Rule | Arabic | Description | Count |
+| - | ---- | ------ | ----------- | ----- |
+| 1 | Izhaar Halqi | إظهار حلقي | Clear pronunciation without extra ghunnah | 3,627 |
+| 2 | Idgham | إدغام | Merging of the Noon/Tanween into the next letter |
+| 3 | Iqlab | إقلاب | Transformation of Noon/Tanween into a hidden Meem |
+| 4 | Ikhfaa Haqiqi | إخفاء حقيقي | Hiding the Noon/Tanween with nasalization |
 
 ### Izhaar Halqi (إظهار حلقي)
 إخراج الحرف من مخرجه بلا غنة زائدة (فصل النون/التنوين عن التالي بلا سكت).
@@ -34,7 +34,7 @@ This section covers the rules applied to Noon Sakinah and Tanween in Hafs ‘an 
 
 | Following Letter | Examples |
 | ---------------- | -------- |
-| ء (Hamza) | وَيَنۡـَٔوۡنَ، مَّنۡ أَعۡرَضَ، وَجَنَّٰتٍ أَلۡفَافً |
+| ء (Hamza) | وَيَنۡـَٔوۡنَ، مَّنۡ أَعۡرَضَ، وَجَنَّٰتٍ أَلۡفَافً | 
 | هـ (Ha) | مِّنۡهُم،  مِنۡ هَاد،  قَوۡمٍ هَاد |
 | ع (Ain) |  مِنۡ عَاصِمٖۗ،  شَيۡءٍ عَلِيمٌ |
 | ح (Ha) | يَنۡحِتُونَ،  عَزِيزٌ حَكِيم |
